@@ -11,11 +11,8 @@ typedef struct s_map
 {
 	int		size;
 	int		fd;
-	int		l_size;
-	int		c_size;
+	int		*sizes;
 	//char	**game_map;
-	//int[]		sizes;
-	
 }	t_map;
 
 

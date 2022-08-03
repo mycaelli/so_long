@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/03 21:41:13 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/03 21:51:59 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "./includes/gnl.h"
 
 int	line_size(char *line);
-void	map_size(char *file_path);
+int	*map_size(char *file_path);
 
 int	main(int argc, char *argv[])
 {
@@ -39,26 +39,23 @@ int	main(int argc, char *argv[])
 	
 }
 
-void	map_size(char *file_path)
+int	*map_size(char *file_path)
 {
 	t_map		map;
 	char		*line;
-	//int i;
 
-	//i = 0;
-	map.l_size = 0;
-	map.c_size = 0;
+	map.sizes[0] = 0;
+	map.sizes[1] = 0;
 	map.fd = open(file_path, O_RDONLY);
 	line = get_next_line(map.fd, 1);
-	while (line[map.l_size] && line[map.l_size] != '\n')
-		map.l_size++;
-	printf("%d\n", map.l_size);
-
+	while (line[map.sizes[0]] && line[map.sizes[0]] != '\n')
+		map.sizes[0]++;
 	while (line)
 	{
 		line = get_next_line(map.fd, 1);
-		map.c_size++;
+		map.sizes[1]++;
 	}
-	printf("%d\n", map.c_size);
-
+	printf("%d\n", map.sizes[0]);
+	printf("%d\n", map.sizes[1]);
+	return(map.sizes);
 }
