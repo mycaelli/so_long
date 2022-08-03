@@ -6,26 +6,26 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 04:43:22 by coder             #+#    #+#             */
-/*   Updated: 2022/05/13 02:46:00 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/03 21:02:43 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int buffer_size)
 {	
 	char		*buffer;
 	char		*line;
 	static char	*accumulator;	
 	int			validation;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || buffer_size <= 0)
 		return (NULL);
 	validation = 1;
-	buffer = new_buffer();
+	buffer = new_buffer(buffer_size);
 	while ((!ft_strchr(accumulator, '\n')) && validation > 0)
 	{
-		validation = read(fd, buffer, BUFFER_SIZE);
+		validation = read(fd, buffer, buffer_size);
 		if (validation == -1)
 		{
 			free(buffer);
@@ -40,11 +40,11 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-char	*new_buffer(void)
+char	*new_buffer(int buffer_size)
 {
 	char	*buffer;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = malloc((buffer_size + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	return (buffer);
