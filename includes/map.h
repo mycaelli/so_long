@@ -9,10 +9,9 @@
 
 typedef struct s_map
 {
-	int		size;
+	char	**map_game;
 	int		fd;
 	int		*sizes;
-	//char	**game_map;
 }	t_map;
 
 
