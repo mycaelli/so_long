@@ -6,13 +6,14 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/04 20:21:14 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/04 21:25:05 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
 #include "./includes/map.h"
 #include "./includes/gnl.h"
+#include "./libft/libft.h"
 
 int	line_size(char *line);
 t_map	*map_size(char *file_path);
@@ -54,7 +55,8 @@ t_map	*map_size(char *file_path)
 	char		*line;
 	int			fd;
 
-	map = ft_calloc(sizeof(t_map)); //ver como faz isso
+	//map = ft_calloc(1, sizeof(t_map)); //ver como faz isso
+	//map = ft_calloc(sizeof(t_map), 1);
 	map->rows= 0;
 	map->cols = 0;
 	fd = open(file_path, O_RDONLY); //verify fd
@@ -77,6 +79,7 @@ t_map	*map_size(char *file_path)
 	// game[0][0] = line[0]
 char	**creat_map(t_map *map)
 {
+	//printf("%d\n", map->rows);
 /*
 	map = ft_calloc(sizeof(t_map));
 
