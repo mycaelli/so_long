@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 19:11:32 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/05 20:23:18 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	map_size(char *file_path, t_map *map)
 
 	map->rows = 0;
 	map->cols = 0;
-	fd = open(file_path, O_RDONLY);
+	fd = open(file_path, O_RDONLY); //CLOSE FILES
 	if (fd < 0)
-		ft_printf("ERROR: FD INVALID");
+		ft_printf("Error\n %s\n", strerror(ENOENT));
 	line = get_next_line(fd, 1);
 	while (line[map->cols] && line[map->cols] != '\n')
 		map->cols++;
