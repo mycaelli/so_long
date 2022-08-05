@@ -1,5 +1,5 @@
 #include "./map/map.h"
-#include "./includes/gnl.h"
+#include "./get_next_line/get_next_line.h"
 #include "./libft/libft.h"
 #include "./includes/so_long.h"
 #include "./ft_printf/ft_printf.h"
@@ -13,8 +13,8 @@ int	main(int argc, char *argv[])
 	if (!map)
 		printf("MAP ALLOCATION FAILED");
 	map_size(argv[1], map);
-	//map_initialize(map);
-	//map_generate(argv[1], map);
+	map_initialize(map);
+	map_generate(argv[1], map);
 
 	// ver como dar free na struct
 	//free(map->data);

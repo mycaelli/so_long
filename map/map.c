@@ -6,13 +6,13 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 20:23:18 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/05 20:45:41 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "map.h"
-#include "../includes/gnl.h"
+#include "../get_next_line/get_next_line.h"
 #include "../libft/libft.h"
 #include "../ft_printf/ft_printf.h"
 
