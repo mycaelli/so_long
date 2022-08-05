@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 18:34:18 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/05 19:11:32 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "map.h"
 #include "../includes/gnl.h"
 #include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
 
 void	map_size(char *file_path, t_map *map)
 {
@@ -24,7 +25,7 @@ void	map_size(char *file_path, t_map *map)
 	map->cols = 0;
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
-		printf("ERROR: FD INVALID");
+		ft_printf("ERROR: FD INVALID");
 	line = get_next_line(fd, 1);
 	while (line[map->cols] && line[map->cols] != '\n')
 		map->cols++;

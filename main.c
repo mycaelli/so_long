@@ -2,11 +2,13 @@
 #include "./includes/gnl.h"
 #include "./libft/libft.h"
 #include "./includes/so_long.h"
+#include "./ft_printf/ft_printf.h"
 
 int	main(int argc, char *argv[])
 {
 	t_map *map;
 
+	ft_printf("FT PRINTF OK\n");
 	map = (t_map*) ft_calloc(1, sizeof(t_map));
 	if (!map)
 		printf("MAP ALLOCATION FAILED");
