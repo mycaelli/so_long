@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 20:45:41 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:01:44 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	map_size(char *file_path, t_map *map)
 	map->cols = 0;
 	fd = open(file_path, O_RDONLY); //CLOSE FILES
 	if (fd < 0)
+	{
 		ft_printf("Error\n %s\n", strerror(ENOENT));
+		exit(EXIT_FAILURE);
+	}
 	line = get_next_line(fd, 1);
 	while (line[map->cols] && line[map->cols] != '\n')
 		map->cols++;
@@ -43,11 +46,17 @@ void	map_initialize(t_map *map)
 	i = -1;
 	map->data = ft_calloc(sizeof(char*), map->rows);
 	if (!map->data)
-		printf("ERROR: MAP->DATA CALLOC FAILED 1");
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
 	while (i++ < map->rows)
 		map->data[i] = ft_calloc(sizeof(char), map->cols);
 	if (!*(map->data))
-		printf("ERROR: MAP->DATA CALLOC FAILED 2");
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
 }
 
 void	map_generate(char *file_path, t_map *map)
@@ -61,9 +70,7 @@ void	map_generate(char *file_path, t_map *map)
 	i = 0;
 	j = 0;
 	count = map->rows;
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		printf("ERROR: FD INVALID");
+	fd = open(file_path, O_RDONLY); // ja foi testado
 	// Tentar fazer verificação dos erros aqui
 	while (count)
 	{
