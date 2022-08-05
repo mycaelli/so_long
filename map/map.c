@@ -6,34 +6,14 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 07:34:00 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/05 18:34:18 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
-#include "./includes/map.h"
-#include "./includes/gnl.h"
-#include "./libft/libft.h"
-
-void	map_size(char *file_path, t_map *map);
-void	map_initialize(t_map *map);
-void	map_generate(char *file_path, t_map *map);
-
-int	main(int argc, char *argv[])
-{
-	t_map *map;
-
-	map = (t_map*) ft_calloc(1, sizeof(t_map));
-	if (!map)
-		printf("MAP ALLOCATION FAILED");
-	map_size(argv[1], map);
-	map_initialize(map);
-	map_generate(argv[1], map);
-
-	argc++; //ARRUMAR ISSOOOOOO -> if argc == 1 NO VALID MAP WAS GIVEN
-
-	return (0);
-}
+#include "../includes/so_long.h"
+#include "map.h"
+#include "../includes/gnl.h"
+#include "../libft/libft.h"
 
 void	map_size(char *file_path, t_map *map)
 {

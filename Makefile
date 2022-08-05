@@ -6,7 +6,7 @@
 #    By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/26 21:20:54 by mcerquei          #+#    #+#              #
-#    Updated: 2022/08/04 21:15:19 by mcerquei         ###   ########.fr        #
+#    Updated: 2022/08/05 18:33:44 by mcerquei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,12 @@ SRC_LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT))
 GNL = get_next_line.c get_next_line_utils.c
 GNL_DIR = get_next_line/
 SRC_GNL = $(addprefix $(GNL_DIR), $(GNL))
-	
 
+#MAP = map.c
+#MAP_DIR = map/
+#SRC_MAP = $(addprefix $(MAP_DIR), $(MAP))
 
-SRC = 	map.c
+SRC = map/map.c main.c
 
 SRC_OBJ = $(SRC:.c=.o)
 
