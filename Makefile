@@ -6,7 +6,7 @@
 #    By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/26 21:20:54 by mcerquei          #+#    #+#              #
-#    Updated: 2022/08/05 19:10:57 by mcerquei         ###   ########.fr        #
+#    Updated: 2022/08/06 06:54:59 by mcerquei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC_PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF))
 #MAP_DIR = map/
 #SRC_MAP = $(addprefix $(MAP_DIR), $(MAP))
 
-SRC = map/map.c main.c
+SRC = main.c map/map.c  map/map_errors.c
 
 SRC_OBJ = $(SRC:.c=.o)
 

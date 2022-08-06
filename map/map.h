@@ -20,5 +20,9 @@ typedef struct s_map
 void	map_size(char *file_path, t_map *map);
 void	map_initialize(t_map *map);
 void	map_generate(char *file_path, t_map *map);
+void	check_chars(char c, t_map *map);
+void	check_valid_char(int *check);
+void	check_rect(int row, int col);
+void	check_walls(t_map *map);
 
 #endif
