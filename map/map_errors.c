@@ -11,26 +11,23 @@
 #include "map.h"
 #include "../ft_printf/ft_printf.h"
 
-void	check_chars(char c, t_map *map)
+void		check_chars(char c, int count)
 {
 	int	*check;
 	int i;
 
 	i = -1;
-	while (i++ < 6)
-		check[i] = -1;
-	if (c == 0)
-		check[0] = 0;
-	else if (c == 1)
-		check[1] = 0;
-	else if (c == 'C')
-		check[2] = 0;
+	check = ft_calloc(4, sizeof(int));
+	if (c == 'C')
+		check[0]++;
 	else if (c == 'E')
-		check[3] = 0;
+		check[1]++;
 	else if (c == 'P')
-		check[4] = 0;
+		check[2]++;
 	else
-		check[5] = 0;
+		check[3]++;
+	if (count == 0)
+		check_valid_char(check);
 }
 
 void	check_valid_char(int *check)
@@ -45,6 +42,7 @@ void	check_valid_char(int *check)
 		ft_printf("Error\n Invalid character: %c on map\n", check[5]);
 		exit(EXIT_FAILURE);	
 	}
+	free(check);
 }
 
 void	check_rect(int row, int col)
@@ -58,28 +56,30 @@ void	check_rect(int row, int col)
 
 void	check_walls(t_map *map)
 {
-	int verify[2];
-
-	verify[0] = 0; //i
-	verify[1] = 0; //j
-	while (map->data[verify[0]][verify[1]] == 1)
+	int j = 0;
+	int i = 0;
+	while (map->data[i][j] == '1')
 	{
-		if (verify[1] != map->cols-1 && verify[1] != 0)
-		{
-			if (verify[0] == 0)
-				verify[1]+=2;
-			verify[1]--;
-		}
-		else 
-		{
-			if (verify[1] == map->cols-1)
-				verify[0]+=2;
-			verify[0]--;
-		}
+		// se estiver na primeira linha
+		// incrementa enquanto j ate a ultima col
+		if (i == 0 && j < map->cols-1)
+			j++;
+		// se estiver ultuma coluna
+		// incrementa enquanto i ate ultima linha
+		else if (j == map->cols-1 && i < map->rows-1)
+			i++;
+		// se estiver na ultima linha
+		// decrementa enquanto ate a primeira col
+		else if(i == map->rows-1 && j > 0)
+			j--;
+		// se estiver na primeira col
+		// decrementa enquanto até a primeira linha
+		else if (j == 0 && i > 0)
+			i--;
+		if (i == 0 && j == 0)
+			return ;
+		//ft_printf("")
 	}
-	if (map->data[verify[0]][verify[1]]  != 1)
-	{
-		ft_printf("Error\n Map is not surrounded by walls (1's)\n");
-		exit(EXIT_FAILURE);
-	}
+	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
+	exit(EXIT_FAILURE);
 }

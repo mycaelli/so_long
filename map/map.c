@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/06 07:06:28 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/07 19:02:35 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	map_size(char *file_path, t_map *map)
 		line = get_next_line(fd, 1);
 		map->rows++;
 	}
+	check_rect(map->rows, map->cols);
 }
 
 void	map_initialize(t_map *map)
@@ -71,7 +72,6 @@ void	map_generate(char *file_path, t_map *map)
 	j = 0;
 	count = map->rows;
 	fd = open(file_path, O_RDONLY); // ja foi testado
-	// Tentar fazer verificação dos erros aqui
 	while (count)
 	{
 		line = get_next_line(fd, 1);
@@ -79,12 +79,10 @@ void	map_generate(char *file_path, t_map *map)
 		while (j++ < map->cols)
 		{
 			map->data[i][j] = line[j];
-			check_chars(line[j], map);
+			check_chars(line[j], count);
 		}
 		i++;
 		count--;
-	}	
-	check_valid_char(check);
-	check_rect(map->rows, map->cols);
+	}
 	check_walls(map);
 }
