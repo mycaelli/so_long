@@ -11,53 +11,39 @@
 #include "map.h"
 #include "../ft_printf/ft_printf.h"
 
-void		check_chars(char c, int count)
+void check_chars(char c, int *check)
 {
-	int	*check;
-	int i;
-
-	i = -1;
-	check = ft_calloc(4, sizeof(int));
 	if (c == 'C')
 		check[0]++;
 	else if (c == 'E')
 		check[1]++;
 	else if (c == 'P')
 		check[2]++;
-	else
+	else if (c != '0' && c != '1' && c != '\n' && c)
 		check[3]++;
-	if (count == 0)
-		check_valid_char(check);
 }
 
 void	check_valid_char(int *check)
 {
-	if (check[2] == -1 || check[3] == -1 || check[4] == -1)
+	if (check[0] == 0 || check[1] == 0 || check[2] == 0)
 	{
 		ft_printf("Error\n The map must contain at least 1 character C, E and P\n");
 		exit(EXIT_FAILURE);
 	}
-	else if (check[5] > -1)
+	else if(check[3] > 0)
 	{
-		ft_printf("Error\n Invalid character: %c on map\n", check[5]);
+		ft_printf("Error\n Invalid character on map\n");
 		exit(EXIT_FAILURE);	
-	}
-	free(check);
-}
-
-void	check_rect(int row, int col)
-{
-	if (row == col)
-	{
-		ft_printf("Error\n The map must be rectangular\n");
-		exit(EXIT_FAILURE);
 	}
 }
 
 void	check_walls(t_map *map)
 {
-	int j = 0;
-	int i = 0;
+	int j;
+	int i;
+
+	j = 0;
+	i = 0;
 	while (map->data[i][j] == '1')
 	{
 		// se estiver na primeira linha
@@ -78,7 +64,12 @@ void	check_walls(t_map *map)
 			i--;
 		if (i == 0 && j == 0)
 			return ;
-		//ft_printf("")
+	}
+	if (map->data[i][j] != 'E' && map->data[i][j] != 'P' && map->data[i][j] != 'C'
+		&& map->data[i][j] != '1' && map->data[i][j] != '0')
+	{
+		ft_printf("Error\n Map is not rectangular\n");
+		exit(EXIT_FAILURE);
 	}
 	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
 	exit(EXIT_FAILURE);

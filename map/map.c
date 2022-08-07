@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/07 19:02:35 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:41:36 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	map_size(char *file_path, t_map *map)
 		line = get_next_line(fd, 1);
 		map->rows++;
 	}
-	check_rect(map->rows, map->cols);
 }
 
 void	map_initialize(t_map *map)
@@ -64,25 +63,28 @@ void	map_generate(char *file_path, t_map *map)
 {
 	char		*line;
 	int			fd;
-	int			i;
-	int			j;
+	int			pos[2];
 	int			count;
+	int			*check;
 
-	i = 0;
-	j = 0;
+	pos[0] = 0;
+	pos[1] = 0;
 	count = map->rows;
 	fd = open(file_path, O_RDONLY); // ja foi testado
+	check = ft_calloc(4, sizeof(int));
 	while (count)
 	{
 		line = get_next_line(fd, 1);
-		j = -1;
-		while (j++ < map->cols)
+		pos[1] = -1;
+		while (pos[1]++ < map->cols)
 		{
-			map->data[i][j] = line[j];
-			check_chars(line[j], count);
+			map->data[pos[0]][pos[1]] = line[pos[1]];
+			check_chars(line[pos[1]], check);
 		}
-		i++;
+		pos[0]++;
 		count--;
 	}
+	check_valid_char(check);
 	check_walls(map);
+	free(check);
 }
