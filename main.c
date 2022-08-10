@@ -6,15 +6,15 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map *map;
+	t_map 	*map;
+	int		i;
 
+	i = 0;
 	if (argc != 2)
 	{
 		ft_printf("Error\n %s\n", strerror(EINVAL));
 		exit (EXIT_FAILURE);
 	}
-
-	//ft_printf("FT PRINTF OK\n");
 	map = (t_map*) ft_calloc(1, sizeof(t_map));
 	if (!map)
 	{
@@ -25,8 +25,15 @@ int	main(int argc, char *argv[])
 	map_initialize(map);
 	map_generate(argv[1], map);
 
+	while (i < map->rows)
+	{
+		free(map->data[i]);
+		i++;
+	}
+	free(map->data);
+	free(map);
+
 	// ver como dar free na struct
-	//free(map->data);
 	//free(map);
 	//argc++; //ARRUMAR ISSOOOOOO -> if argc == 1 NO VALID MAP WAS GIVEN
 	//argv[argc]++;
