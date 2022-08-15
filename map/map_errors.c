@@ -7,9 +7,7 @@
 // You must be able to parse any kind of map, as long as it respects the above rules.
 //if ERROR: the program must exit in a clean way, and return "Error\n" followed by an explicit error message
 
-#include "../includes/so_long.h"
 #include "map.h"
-#include "../ft_printf/ft_printf.h"
 
 void check_chars(char c, int *check)
 {
@@ -74,3 +72,6 @@ void	check_walls(t_map *map)
 	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
 	exit(EXIT_FAILURE);
 }
+
+
+// 

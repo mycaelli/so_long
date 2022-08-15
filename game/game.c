@@ -1,52 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 17:08:12 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/03 18:37:50 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/13 19:43:59 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "./includes/so_long.h"
+#include "game.h"
 
 // abrir janela (qual tamanho?)
-int	open_window()
+int	open_window(t_game *game, int rows, int cols)
 {
-	// criando uma struct data
-	t_data	data;
-	
+	// criando uma struct game
+
 	// inicializa a lib MLX 
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
+	game->mlx_ptr = mlx_init();
+	game->rows = WIN_SIZE * rows;
+	game->cols = WIN_SIZE * cols;
+	//printf("%zu\n", game->rows);
+	if (!game->mlx_ptr)
 		return (-1); // ERROR
 	
 	// cria uma nov janela, retorna um ponteiro para a janela
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 300, "Cat game"); //tamanho da janela?
-	if (!data.win_ptr)
+	game->win_ptr = mlx_new_window(game->mlx_ptr, game->rows, game->cols, "Cat game"); //tamanho da janela?
+	if (!game->win_ptr)
 	{
-		free(data.win_ptr);
+		free(game->win_ptr);
 		return (-1); //ERROR
 	}
 
 	// loop sobre o ponteiro mlx
-	mlx_loop(data.mlx_ptr);
+	mlx_loop(game->mlx_ptr);
 
 	// mlx_init inicializa um display que precisa ser fechado
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	// TEM QUE VOLTAR ISSO DPS (NO MAIN?)
+	//mlx_destroy_display(game->mlx_ptr);
+	//free(game->mlx_ptr);
 	return 0;
 }
-/*
-void	draw_window(t_data data)
-{
-	mlx_xpm_to_image(data.mlx_ptr, )
-}*/
-
-int main()
-{
-	open_window();
-} 

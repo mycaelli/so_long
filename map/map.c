@@ -6,15 +6,13 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/11 00:01:31 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/13 06:54:29 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+
 #include "map.h"
-#include "../get_next_line/get_next_line.h"
-#include "../libft/libft.h"
-#include "../ft_printf/ft_printf.h"
+
 
 void	map_size(char *file_path, t_map *map)
 {
@@ -37,6 +35,7 @@ void	map_size(char *file_path, t_map *map)
 		line = get_next_line(fd, 1);
 		map->rows++;
 	}
+	free(line);
 }
 
 void	map_initialize(t_map *map)
@@ -50,8 +49,11 @@ void	map_initialize(t_map *map)
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
+	// 0800 726 0101 
+	// opcao 3 e 3
 	while (i < map->rows)
 	{
+		// check if \n is coming too
 		map->data[i] = ft_calloc(sizeof(char*), map->cols);
 		i++;
 	}
@@ -77,19 +79,20 @@ void	map_generate(char *file_path, t_map *map)
 	check = ft_calloc(4, sizeof(int));
 	while (count)
 	{
-		line = get_next_line(fd, 1);
+		line = get_next_line(fd, 1); //checar se line eh null
 		pos[1] = -1;
 		while (pos[1]++ < map->cols)
 		{
 			map->data[pos[0]][pos[1]] = line[pos[1]];
-			printf("%c", map->data[pos[0]][pos[1]]);
+			//printf("%c", map->data[pos[0]][pos[1]]);
 			check_chars(line[pos[1]], check);
 		}
-		printf("\n");
+		//printf("\n");
 		pos[0]++;
 		count--;
 	}
 	check_valid_char(check);
 	check_walls(map);
 	free(check);
+	free(line);
 }

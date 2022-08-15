@@ -1,67 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/26 21:20:54 by mcerquei          #+#    #+#              #
-#    Updated: 2022/08/06 06:54:59 by mcerquei         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long.out
-
-CFLAGS = -Wall -Wextra -Werror
-
-X_FLAGS = -lX11 -lXext -lmlx
 
 CC = cc
 
+X_FLAGS = -lX11 -lXext -lmlx
+
 RM = rm -rf
 
-LIBFT = ft_calloc.c
-LIBFT_DIR = libft/
-SRC_LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT))
+SRC =  map/map.c game/game.c map/map_errors.c main.c 
 
-GNL = get_next_line.c get_next_line_utils.c
-GNL_DIR = get_next_line/
-SRC_GNL = $(addprefix $(GNL_DIR), $(GNL))
+OBJ = $(SRC:%.c=%.o)
 
-PRINTF = ft_printf_char.c ft_printf_str.c ft_printf.c
-PRINTF_DIR = ft_printf/
-SRC_PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF))
+LIBFT_A = ./libft/libft.a
 
-#MAP = map.c
-#MAP_DIR = map/
-#SRC_MAP = $(addprefix $(MAP_DIR), $(MAP))
+CLEAN_LIBFT = cd libft && make clean
 
-SRC = main.c map/map.c  map/map_errors.c
+FCLEAN_LIBFT = cd libft && make fclean
 
-SRC_OBJ = $(SRC:.c=.o)
+$(NAME): $(OBJ)
 
-all:	$(NAME)
+$(OBJ): $(LIBFT_A)
+	$(CC) $(SRC) $(LIBFT_A) $(X_FLAGS) -o $(NAME)
 
-$(NAME):	$(SRC_OBJ)
-
-$(SRC_OBJ):
-	$(CC) $(CFLAGS) $(X_FLAGS) $(SRC_LIBFT) $(SRC_PRINTF) $(SRC_GNL) $(SRC) -L ./ -o $(NAME) 
-
-run: cmp
-	./a.out $(SRC_OBJ)
-
-cmp: all
-	$(CC) -g $(CFLAGS) $(SRC)
-
-run_clean: clean fclean
-	$(RM) ./so_long.out $(SRC_OBJ)
+$(LIBFT_A):
+	cd ./libft && make
 
 clean:
-	$(RM) *.o
+	$(RM) $(OBJ)
+	$(CLEAN_LIBFT)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(FCLEAN_LIBFT)
 
-re:	fclean all
 
-.PHONY: all clean fclean re

@@ -8,6 +8,8 @@
 
 # include <stdio.h> // APAGAAAAR
 # include <fcntl.h>
+#include "../libft/libft.h"
+#include "../game/game.h"
 
 typedef struct s_map
 {

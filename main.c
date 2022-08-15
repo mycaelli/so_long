@@ -1,11 +1,9 @@
-#include "./map/map.h"
-#include "./get_next_line/get_next_line.h"
-#include "./libft/libft.h"
-#include "./includes/so_long.h"
-#include "./ft_printf/ft_printf.h"
+#include "game/game.h"
+#include "map/map.h"
 
-int	main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+	/*MAP*/
 	t_map 	*map;
 	int		i;
 
@@ -15,6 +13,7 @@ int	main(int argc, char *argv[])
 		ft_printf("Error\n %s\n", strerror(EINVAL));
 		exit (EXIT_FAILURE);
 	}
+
 	map = (t_map*) ft_calloc(1, sizeof(t_map));
 	if (!map)
 	{
@@ -24,20 +23,17 @@ int	main(int argc, char *argv[])
 	map_size(argv[1], map);
 	map_initialize(map);
 	map_generate(argv[1], map);
+	/*MAP*/
 
-	while (i < map->rows)
+	/*GAME*/
+	t_game *game;
+	game = (t_game*) ft_calloc(1, sizeof(t_game));
+	if (!game)
 	{
-		free(map->data[i]);
-		i++;
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
 	}
-	free(map->data);
-	free(map);
-
-	// ver como dar free na struct
-	//free(map);
-	//argc++; //ARRUMAR ISSOOOOOO -> if argc == 1 NO VALID MAP WAS GIVEN
-	//argv[argc]++;
-
-	return (0);
+	open_window(game, map->rows, map->cols);	
 }
+
 
