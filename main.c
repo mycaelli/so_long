@@ -1,5 +1,6 @@
 #include "game/game.h"
 #include "map/map.h"
+#include "sprites/sprites.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,6 +35,14 @@ int main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	}
 	open_window(game, map->rows, map->cols);	
+
+	/*SPRITE WALL*/
+	t_sprite *wall;
+
+	wall = (t_sprite *) ft_calloc(1, sizeof(t_sprite));
+	wall->file_path = "so_long/images/wall/wall.xpm";
+	img_generate(game, wall);
+
 }
 
 
