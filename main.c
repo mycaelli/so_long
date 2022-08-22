@@ -3,7 +3,7 @@
 #include "sprites/sprites.h"
 
 int main(int argc, char *argv[])
-{
+{	
 	/*MAP*/
 	t_map 	*map;
 	int		i;
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
 	map_generate(argv[1], map);
 	/*MAP*/
 
+	
 	/*GAME*/
 	t_game *game;
 	game = (t_game*) ft_calloc(1, sizeof(t_game));
@@ -36,13 +37,21 @@ int main(int argc, char *argv[])
 	}
 	open_window(game, map->rows, map->cols);	
 
-	/*SPRITE WALL*/
-	t_sprite *wall;
+	img_generate(map, game);
 
-	wall = (t_sprite *) ft_calloc(1, sizeof(t_sprite));
-	wall->file_path = "so_long/images/wall/wall.xpm";
+	/*t_sprite *wall;
+	wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	if (!wall) // correct error?
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
 	img_generate(game, wall);
+	printf("%d\n", wall->height);*/
 
+	mlx_loop(game->mlx_ptr);
+
+	printf("DEPOIS\n");
 }
 
 

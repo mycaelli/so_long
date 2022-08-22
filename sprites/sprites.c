@@ -5,23 +5,88 @@
 // void	*mlx_new_image(void *mlx_ptr,int width,int height);
 // int		mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);
 
-void img_generate(t_game *game, t_sprite *sprite)
-{
+
+void img_generate(t_map *map, t_game *game)
+{	
+	t_sprite *wall;
+	wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	if (!wall) // correct error?
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
+	wall->path = "/home/coder/so_long/sprites/images/wall/wall.xpm";
+	wall->img = mlx_xpm_file_to_image(game->mlx_ptr, wall->path, &wall->width, &wall->height);
+	if (!wall->img)
+	{
+		printf("IMG NULL\n");
+		exit (EXIT_FAILURE);
+	}
+	put_sprites(map, game, wall);
+
 	// img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	sprite->img = mlx_xpm_file_to_image(game->mlx_ptr, sprite->file_path, &sprite->width, &sprite->height);
-}	
+	//sprite->img = mlx_new_image(game->mlx_ptr, sprite->width, sprite->height);
+	//if (!sprite->img) // correct error?
+	//{
+	//	ft_printf("Error\n Image creation failed\n");
+	//	exit (EXIT_FAILURE);
+	//}
+	/*sprite->img = mlx_xpm_file_to_image(game->mlx_ptr, sprite->file_path, &sprite->width, &sprite->height);
+	if (!sprite->img) // correct error?
+	{
+		ft_printf("AQUI Error\n Image creation failed\n");
+		exit (EXIT_FAILURE);
+	}*/
 
-/*
-void	create_walls(t_game *game, t_wall *wall)
-{
-	//mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height)
-
-	wall->ptr_wall = mlx_new_image(game->mlx_ptr, 24, 24);
+	// 
 }
 
-void	put_sprites(t_map *map, t_wall *wall, t_game *game)
+void	put_sprites(t_map *map, t_game *game, t_sprite *sprite)
 {
-	int i;
+/*	int i;
+	int j;
+	int x;
+	int y;
+
+	i = 0;
+	j = 0;
+	x = 12;*/
+
+	int size_x = 0;
+	int size_y;
+
+	while (size_x < 32)
+	{
+		size_y = 0;
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, size_x * 30, size_y * 30);
+		while (size_y < 32)
+		{
+			if (size_y == 7 && size_x == 7)
+			{
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, size_x * 30, size_y * 30);
+			}
+			size_y++;
+		}
+		size_x++;
+	}
+	/*
+	while (i < game->rows)
+	{
+		y = 12;
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x, y);
+		while (j < game->cols)
+		{	
+			//if (map->data[x][y] == '1')
+			//{
+				//mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x, y);
+			//}
+			j++;
+		}
+		i++;
+	}*/
+
+
+/*	int i;
 	int j;
 	int x;
 	int y;
@@ -45,7 +110,5 @@ void	put_sprites(t_map *map, t_wall *wall, t_game *game)
 		}
 		y += 24;
 		i++;
-	}
+	}*/
 }
-*/
-// extrato no 

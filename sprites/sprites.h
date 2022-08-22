@@ -23,13 +23,14 @@
 
 typedef struct s_sprite
 {
-	char	*file_path; //
+	char	*path; //
 	int		width;
 	int		height;
 	void	*img;
 }	t_sprite;
 
-void img_generate(t_game *game, t_sprite *sprite);
+void img_generate(t_map *map, t_game *game);
+void	put_sprites(t_map *map, t_game *game, t_sprite *sprite);
 
 //void	create_walls(t_game *game, t_wall *wall);
 //void	put_sprites(t_map *map, t_wall *wall, t_game *game);
