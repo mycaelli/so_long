@@ -43,31 +43,30 @@ void img_generate(t_map *map, t_game *game)
 
 void	put_sprites(t_map *map, t_game *game, t_sprite *sprite)
 {
-/*	int i;
+	int i;
 	int j;
 	int x;
 	int y;
 
 	i = 0;
-	j = 0;
-	x = 12;*/
-
-	int size_x = 0;
-	int size_y;
-
-	while (size_x < 32)
+	x = 0;
+	while (i < map->rows)
 	{
-		size_y = 0;
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, size_x * 30, size_y * 30);
-		while (size_y < 32)
+		y = 0;
+		j = 0;
+		//mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x * 30, y * 30);
+		while (j < map->cols)
 		{
-			if (size_y == 7 && size_x == 7)
+			if (map->data[i][j] == '1')
 			{
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, size_x * 30, size_y * 30);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x * 31, y * 31);
+				//printf("TÁ AQUI");
 			}
-			size_y++;
+			y++;
+			j++;
 		}
-		size_x++;
+		x++;
+		i++;
 	}
 	/*
 	while (i < game->rows)
