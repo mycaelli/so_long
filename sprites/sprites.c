@@ -8,6 +8,8 @@
 
 void img_generate(t_map *map, t_game *game)
 {	
+	//t_sprite **images;
+	void *images[9];
 	t_sprite *wall;
 	wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
 	if (!wall) // correct error?
@@ -22,7 +24,8 @@ void img_generate(t_map *map, t_game *game)
 		printf("IMG NULL\n");
 		exit (EXIT_FAILURE);
 	}
-	put_sprites(map, game, wall);
+	images[0] = wall->img;
+	put_sprites(map, game, images);
 
 	// img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
 	//sprite->img = mlx_new_image(game->mlx_ptr, sprite->width, sprite->height);
@@ -41,7 +44,7 @@ void img_generate(t_map *map, t_game *game)
 	// 
 }
 
-void	put_sprites(t_map *map, t_game *game, t_sprite *sprite)
+void	put_sprites(t_map *map, t_game *game, void *images[])
 {
 	int i;
 	int j;
@@ -59,7 +62,7 @@ void	put_sprites(t_map *map, t_game *game, t_sprite *sprite)
 		{
 			if (map->data[i][j] == '1')
 			{
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x * 31, y * 31);
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[0], x * 31, y * 31);
 				//printf("TÁ AQUI");
 			}
 			y++;

@@ -30,7 +30,7 @@ typedef struct s_sprite
 }	t_sprite;
 
 void img_generate(t_map *map, t_game *game);
-void	put_sprites(t_map *map, t_game *game, t_sprite *sprite);
+void	put_sprites(t_map *map, t_game *game, void *images[]);
 
 //void	create_walls(t_game *game, t_wall *wall);
 //void	put_sprites(t_map *map, t_wall *wall, t_game *game);
