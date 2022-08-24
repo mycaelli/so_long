@@ -9,39 +9,52 @@
 void img_generate(t_map *map, t_game *game)
 {	
 	//t_sprite **images;
-	void *images[9];
-	t_sprite *wall;
-	wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
-	if (!wall) // correct error?
+	void *images[6];
+
+	//t_sprite *wall;
+	t_sprite *floor;
+	/*t_sprite *collectible;
+	t_sprite *door;
+	t_sprite *character;*/
+
+	//wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	floor = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	/*collectible = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	door = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
+	character = (t_sprite*) ft_calloc(1, sizeof(t_sprite));*/
+
+	//if (!wall || !floor || !collectible || !door || !character) // correct error?
+	if (!floor)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	wall->path = "/home/coder/so_long/sprites/images/wall/wall.xpm";
-	wall->img = mlx_xpm_file_to_image(game->mlx_ptr, wall->path, &wall->width, &wall->height);
-	if (!wall->img)
+
+	//wall->path = "/home/coder/so_long/sprites/images/wall/wall.xpm";
+	floor->path = "/home/coder/so_long/sprites/images/empty_space/floor.xpm";
+	/*collectible->path = "/home/coder/so_long/sprites/images/empty_space/collectible.xpm";
+	door->path = "/home/coder/so_long/sprites/images/exit/exit.xpm";
+	character->path = "/home/coder/so_long/sprites/images/character/character.xpm";*/
+
+	//wall->img = mlx_xpm_file_to_image(game->mlx_ptr, wall->path, &wall->width, &wall->height);
+	floor->img = mlx_xpm_file_to_image(game->mlx_ptr, floor->path, &floor->width, &floor->height);
+	/*collectible->img = mlx_xpm_file_to_image(game->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
+	door->img = mlx_xpm_file_to_image(game->mlx_ptr, door->path, &door->width, &door->height);
+	character->img = mlx_xpm_file_to_image(game->mlx_ptr, character->path, &character->width, &character->height);*/
+
+	//if  (!wall->img || !floor->img || !collectible->img || !door->img || !character->img)
+	if (floor->img)
 	{
-		printf("IMG NULL\n");
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		printf("AQUI\n");
 		exit (EXIT_FAILURE);
-	}
-	images[0] = wall->img;
+	} 
+	//images[0] = wall->img;
+	images[1] = floor->img;
+	/*images[2] = collectible->img;
+	images[3] = door->img;
+	images[4] = character->img;*/
 	put_sprites(map, game, images);
-
-	// img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-	//sprite->img = mlx_new_image(game->mlx_ptr, sprite->width, sprite->height);
-	//if (!sprite->img) // correct error?
-	//{
-	//	ft_printf("Error\n Image creation failed\n");
-	//	exit (EXIT_FAILURE);
-	//}
-	/*sprite->img = mlx_xpm_file_to_image(game->mlx_ptr, sprite->file_path, &sprite->width, &sprite->height);
-	if (!sprite->img) // correct error?
-	{
-		ft_printf("AQUI Error\n Image creation failed\n");
-		exit (EXIT_FAILURE);
-	}*/
-
-	// 
 }
 
 void	put_sprites(t_map *map, t_game *game, void *images[])
@@ -60,11 +73,16 @@ void	put_sprites(t_map *map, t_game *game, void *images[])
 		//mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, sprite->img, x * 30, y * 30);
 		while (j < map->cols)
 		{
-			if (map->data[i][j] == '1')
-			{
+			//if (map->data[i][j] == '0')
+			mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[1], x * 31, y * 31);
+			/*if (map->data[i][j] == '1')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[0], x * 31, y * 31);
-				//printf("TÁ AQUI");
-			}
+			else if (map->data[i][j] == 'C')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[2], x * 31, y * 31);
+			else if (map->data[i][j] == 'E')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[3], x * 31, y * 31);
+			else if (map->data[i][j] == 'P')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[4], x * 31, y * 31);*/
 			y++;
 			j++;
 		}
