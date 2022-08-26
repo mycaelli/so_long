@@ -23,7 +23,6 @@ void img_generate(t_map *map, t_game *game)
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-
 	wall->path = "/home/coder/so_long/sprites/images/wall/wall.xpm";
 	floor->path = "/home/coder/so_long/sprites/images/empty_space/floor.xpm";
 	collectible->path = "/home/coder/so_long/sprites/images/empty_space/collectible.xpm";
@@ -31,10 +30,10 @@ void img_generate(t_map *map, t_game *game)
 
 	wall->img = mlx_xpm_file_to_image(game->mlx_ptr, wall->path, &wall->width, &wall->height);
 	floor->img = mlx_xpm_file_to_image(game->mlx_ptr, floor->path, &floor->width, &floor->height);
-	//collectible->img = mlx_xpm_file_to_image(game->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
 	character->img = mlx_xpm_file_to_image(game->mlx_ptr, character->path, &character->width, &character->height);
+	collectible->img = mlx_xpm_file_to_image(game->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
 	
-	if (!wall->img || !floor->img || !character->img)
+	if (!wall->img || !floor->img || !character->img || collectible->img)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		printf("AQUI\n");
@@ -42,6 +41,7 @@ void img_generate(t_map *map, t_game *game)
 	} 
 	images[0] = wall->img;
 	images[1] = floor->img;
+	images[2] = collectible->img;
 	images[4] = character->img;
 	put_sprites(map, game, images);
 }
