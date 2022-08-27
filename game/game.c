@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 17:08:12 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/15 21:23:28 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:31:02 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	open_window(t_game *game, int rows, int cols)
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	game->rows = WIN_SIZE * rows;
-	game->cols = WIN_SIZE * cols;
+	game->cols = WIN_SIZE * rows;
+	game->rows = WIN_SIZE * cols;
 	// cria uma nov janela, retorna um ponteiro para a janela
 	game->win_ptr = mlx_new_window(game->mlx_ptr, game->rows, game->cols, "Cat game"); //tamanho da janela?
 	if (!game->win_ptr)

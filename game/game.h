@@ -9,7 +9,7 @@
 #include <string.h>
 #include <errno.h>
 
-#define WIN_SIZE	30
+#define WIN_SIZE	24
 
 typedef struct s_game
 {
