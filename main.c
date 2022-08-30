@@ -28,28 +28,18 @@ int main(int argc, char *argv[])
 
 	
 	/*GAME*/
-	t_game *game;
-	game = (t_game*) ft_calloc(1, sizeof(t_game));
-	if (!game)
+	t_window *window;
+	window = (t_window*) ft_calloc(1, sizeof(t_window));
+	if (!window)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	open_window(game, map->rows, map->cols);	
+	open_window(window, map->rows, map->cols);	
 
-	img_generate(map, game);
+	img_generate(map, window);
 
-	/*t_sprite *wall;
-	wall = (t_sprite*) ft_calloc(1, sizeof(t_sprite));
-	if (!wall) // correct error?
-	{
-		ft_printf("Error\n %s\n", strerror(ENOMEM));
-		exit (EXIT_FAILURE);
-	}
-	img_generate(game, wall);
-	printf("%d\n", wall->height);*/
-
-	mlx_loop(game->mlx_ptr);
+	mlx_loop(window->mlx_ptr);
 
 	printf("DEPOIS\n");
 }

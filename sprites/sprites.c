@@ -1,6 +1,6 @@
 #include "sprites.h"
 
-void img_generate(t_map *map, t_game *game)
+void img_generate(t_map *map, t_window *window)
 {	
 	void *images[5];
 
@@ -30,11 +30,11 @@ void img_generate(t_map *map, t_game *game)
 	background->path =  "/home/coder/so_long/sprites/images/background/background.xpm";
 	door->path = "/home/coder/so_long/sprites/images/door/door.xpm";
 
-	wall->img = mlx_xpm_file_to_image(game->mlx_ptr, wall->path, &wall->width, &wall->height);
-	floor->img = mlx_xpm_file_to_image(game->mlx_ptr, floor->path, &floor->width, &floor->height);
-	character->img = mlx_xpm_file_to_image(game->mlx_ptr, character->path, &character->width, &character->height);
-	collectible->img = mlx_xpm_file_to_image(game->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
-	door->img = mlx_xpm_file_to_image(game->mlx_ptr, door->path, &door->width, &door->height);
+	wall->img = mlx_xpm_file_to_image(window->mlx_ptr, wall->path, &wall->width, &wall->height);
+	floor->img = mlx_xpm_file_to_image(window->mlx_ptr, floor->path, &floor->width, &floor->height);
+	character->img = mlx_xpm_file_to_image(window->mlx_ptr, character->path, &character->width, &character->height);
+	collectible->img = mlx_xpm_file_to_image(window->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
+	door->img = mlx_xpm_file_to_image(window->mlx_ptr, door->path, &door->width, &door->height);
 
 	if (!wall->img || !floor->img || !character->img || !collectible->img || !door->img)
 	{
@@ -47,10 +47,10 @@ void img_generate(t_map *map, t_game *game)
 	images[2] = collectible->img;
 	images[3] = door->img;
 	images[4] = character->img;
-	put_sprites(map, game, images);
+	put_sprites(map, window, images);
 }
 
-void	put_sprites(t_map *map, t_game *game, void *images[])
+void	put_sprites(t_map *map, t_window *window, void *images[])
 {
 	int x;
 	int y;
@@ -62,15 +62,15 @@ void	put_sprites(t_map *map, t_game *game, void *images[])
 		while (y < map->rows)
 		{
 			if (map->data[y][x] == '0')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[1], x * 32, y * 32);
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[1], x * 32, y * 32);
 			else if (map->data[y][x] == '1')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[0], x * 32, y * 32);
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[0], x * 32, y * 32);
 			else if (map->data[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[4], x * 32, y * 32);
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[4], x * 32, y * 32);
 			else if (map->data[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[2], x * 32, y * 32);
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[2], x * 32, y * 32);
 			else if (map->data[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[3], x * 32, y * 32);
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[3], x * 32, y * 32);
 			y++;
 		}
 		x++;

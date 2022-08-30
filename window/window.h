@@ -11,13 +11,13 @@
 
 #define WIN_SIZE	32
 
-typedef struct s_game
+typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	size_t	cols;
 	size_t	rows;
-}	t_game;
+}	t_window;
 
-int	open_window(t_game *game, int rows, int cols);
+int	open_window(t_window *window, int rows, int cols);
 #endif
