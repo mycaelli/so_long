@@ -54,34 +54,27 @@ void img_generate(t_map *map, t_game *game)
 
 void	put_sprites(t_map *map, t_game *game, void *images[])
 {
-	int i;
-	int j;
 	int x;
 	int y;
 
-	i = 0;
 	x = 0;
-	
-	while (i < map->cols)
+	while (x < map->cols)
 	{
 		y = 0;
-		j = 0;
-		while (j < map->rows)
+		while (y < map->rows)
 		{
-			if (map->data[j][i] == '0')
+			if (map->data[y][x] == '0')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[1], x * 32, y * 32);
-			else if (map->data[j][i] == '1')
+			else if (map->data[y][x] == '1')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[0], x * 32, y * 32);
-			else if (map->data[j][i] == 'P')
+			else if (map->data[y][x] == 'P')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[4], x * 32, y * 32);
-			else if (map->data[j][i] == 'C')
+			else if (map->data[y][x] == 'C')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[2], x * 32, y * 32);
-			else if (map->data[j][i] == 'E')
+			else if (map->data[y][x] == 'E')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, images[3], x * 32, y * 32);
 			y++;
-			j++;
 		}
 		x++;
-		i++;
 	}
 }
