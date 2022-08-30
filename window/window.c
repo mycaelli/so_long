@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 17:08:12 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/27 16:31:02 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/08/30 04:02:01 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "game.h"
+#include "window.h"
 
 // abrir janela (qual tamanho?)
 int	open_window(t_game *game, int rows, int cols)

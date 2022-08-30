@@ -9,7 +9,7 @@
 # include <stdio.h> // APAGAAAAR
 # include <fcntl.h>
 #include "../libft/libft.h"
-#include "../game/game.h"
+#include "../window/window.h"
 
 typedef struct s_map
 {

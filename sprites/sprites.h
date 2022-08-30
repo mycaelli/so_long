@@ -3,7 +3,7 @@
 
 # define SPRITES_H
 
-# include "../game/game.h"
+#include "../window/window.h"
 # include "../map/map.h"
 // void	*mlx_new_image(void *mlx_ptr,int width,int height);
 // int		mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);

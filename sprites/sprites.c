@@ -1,5 +1,3 @@
-#include "../map/map.h"
-#include "../game/game.h"
 #include "sprites.h"
 
 void img_generate(t_map *map, t_game *game)

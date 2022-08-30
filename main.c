@@ -1,4 +1,4 @@
-#include "game/game.h"
+#include "window/window.h"
 #include "map/map.h"
 #include "sprites/sprites.h"
 
