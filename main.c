@@ -1,6 +1,7 @@
 #include "window/window.h"
 #include "map/map.h"
 #include "sprites/sprites.h"
+#include "hook/hook.h"
 
 int main(int argc, char *argv[])
 {	
@@ -39,7 +40,13 @@ int main(int argc, char *argv[])
 
 	img_generate(map, window);
 
+	mlx_loop_hook(window->mlx_ptr, &handle_no_event, &window);
+	mlx_key_hook(window->win_ptr, &handle_input, &window);
+
 	mlx_loop(window->mlx_ptr);
+
+	mlx_destroy_display(window->mlx_ptr);
+	free(window->mlx_ptr);
 
 	printf("DEPOIS\n");
 }
