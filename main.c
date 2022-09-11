@@ -27,8 +27,27 @@ int main(int argc, char *argv[])
 	map_generate(argv[1], map);
 	/*MAP*/
 
+	/*NO LEAK GAME*/
+	t_window *window;
+	window = (t_window*) ft_calloc(1, sizeof(t_window));
+	if (!window)
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
+	open_window(window, map->rows, map->cols);
+
+	img_generate(map, window);
 	
-	/*GAME*/
+	mlx_loop(window->mlx_ptr);
+
+	mlx_destroy_window(window->mlx_ptr, window->win_ptr);
+	mlx_destroy_display(window->mlx_ptr);
+	free(window->mlx_ptr);
+	free(window);
+	/*NO LEAK GAME*/
+
+	/* 	LEAK GAME
 	t_window *window;
 	window = (t_window*) ft_calloc(1, sizeof(t_window));
 	if (!window)
@@ -46,7 +65,7 @@ int main(int argc, char *argv[])
 	mlx_loop(window->mlx_ptr);
 
 	mlx_destroy_display(window->mlx_ptr);
-	free(window->mlx_ptr);
+	free(window->mlx_ptr);*/
 
 
 	int k;
