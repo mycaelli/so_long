@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/13 06:54:29 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/11 23:32:18 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "map.h"
 
 
-void	map_size(char *file_path, t_map *map)
+void	map_size(char *file_path, t_map *map) 
 {
 	char		*line;
 	int			fd;
@@ -30,14 +30,14 @@ void	map_size(char *file_path, t_map *map)
 	line = get_next_line(fd, 1);
 	while (line[map->cols] && line[map->cols] != '\n')
 		map->cols++;
+	free(line);
 	while (line)
 	{
 		line = get_next_line(fd, 1);
+		free(line);
 		map->rows++;
 	}
-	free(line);
 }
-
 void	map_initialize(t_map *map)
 {
 	int i;
