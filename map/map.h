@@ -9,7 +9,11 @@
 # include <stdio.h> // APAGAAAAR
 # include <fcntl.h>
 #include "../libft/libft.h"
-#include "../window/window.h"
+#include <stdlib.h>
+#include <stddef.h> //size_t ?
+#include <mlx.h>
+#include <string.h>
+#include <errno.h>
 
 typedef struct s_map
 {
@@ -24,5 +28,7 @@ void	map_generate(char *file_path, t_map *map);
 void	check_chars(char c, int *check);
 void	check_valid_char(int *check);
 void	check_walls(t_map *map);
+void	map_size(char *file_path, t_map *map);
+int		map_open(char*file_path);
 
 #endif
