@@ -48,6 +48,16 @@ int main(int argc, char *argv[])
 	mlx_destroy_display(window->mlx_ptr);
 	free(window->mlx_ptr);
 
+
+	int k;
+	k = 0;
+	while (k < map->rows)
+	{
+		free(map->data[k]);
+		k++;
+	}
+	free(map->data);
+	free(map);
 	printf("DEPOIS\n");
 }
 
