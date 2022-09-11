@@ -56,20 +56,20 @@ void	put_sprites(t_map *map, t_window *window, void *images[])
 	int y;
 
 	x = 0;
-	while (x < map->cols)
+	while (x < map->rows)
 	{
 		y = 0;
-		while (y < map->rows)
+		while (y < map->cols)
 		{
-			if (map->data[y][x] == '0')
+			if (map->data[x][y] == '0')
 				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[1], x * 32, y * 32);
-			else if (map->data[y][x] == '1')
+			else if (map->data[x][y] == '1')
 				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[0], x * 32, y * 32);
-			else if (map->data[y][x] == 'P')
+			else if (map->data[x][y] == 'P')
 				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[4], x * 32, y * 32);
-			else if (map->data[y][x] == 'C')
+			else if (map->data[x][y] == 'C')
 				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[2], x * 32, y * 32);
-			else if (map->data[y][x] == 'E')
+			else if (map->data[x][y] == 'E')
 				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, images[3], x * 32, y * 32);
 			y++;
 		}
