@@ -36,15 +36,11 @@ int main(int argc, char *argv[])
 		exit (EXIT_FAILURE);
 	}
 	open_window(window, map->rows, map->cols);
-
-	img_generate(map, window);
+	window->map = map;
 	
-	mlx_loop(window->mlx_ptr);
+	mlx_hook(window->win_ptr, 2, 1L<<0, close_win, window);
 
-	mlx_destroy_window(window->mlx_ptr, window->win_ptr);
-	mlx_destroy_display(window->mlx_ptr);
-	free(window->mlx_ptr);
-	free(window);
+	mlx_loop(window->mlx_ptr);
 	/*NO LEAK GAME*/
 
 	/* 	LEAK GAME
@@ -66,18 +62,6 @@ int main(int argc, char *argv[])
 
 	mlx_destroy_display(window->mlx_ptr);
 	free(window->mlx_ptr);*/
-
-
-	int k;
-	k = 0;
-	while (k < map->rows)
-	{
-		free(map->data[k]);
-		k++;
-	}
-	free(map->data);
-	free(map);
-	printf("DEPOIS\n");
 }
 
 

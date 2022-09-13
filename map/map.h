@@ -30,5 +30,6 @@ void	check_valid_char(int *check);
 void	check_walls(t_map *map);
 void	map_size(char *file_path, t_map *map);
 int		map_open(char*file_path);
+void	map_free(t_map *map);
 
 #endif

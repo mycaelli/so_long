@@ -17,6 +17,7 @@ typedef struct s_window
 	void	*win_ptr;
 	size_t	cols;
 	size_t	rows;
+	t_map	*map;
 }	t_window;
 
 int	open_window(t_window *window, int rows, int cols);

@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/12 00:41:28 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/13 06:06:24 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,18 @@ void	map_generate(char *file_path, t_map *map)
 	free(check);
 	line = get_next_line(fd, 1);
 	free(line);
+}
+
+void	map_free(t_map *map)
+{
+	int k;
+	k = 0;
+
+	while (k < map->rows)
+	{
+		free(map->data[k]);
+		k++;
+	}
+	free(map->data);
+	free(map);
 }
