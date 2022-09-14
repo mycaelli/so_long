@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	map_generate(argv[1], map);
 	/*MAP*/
 
-	/*NO LEAK GAME*/
+	/*GAME*/
 	t_window *window;
 	window = (t_window*) ft_calloc(1, sizeof(t_window));
 	if (!window)
@@ -37,31 +37,12 @@ int main(int argc, char *argv[])
 	}
 	open_window(window, map->rows, map->cols);
 	window->map = map;
+	img_generate(map, window);
+	/*GAME*/
 	
 	mlx_hook(window->win_ptr, 2, 1L<<0, close_win, window);
 
 	mlx_loop(window->mlx_ptr);
-	/*NO LEAK GAME*/
-
-	/* 	LEAK GAME
-	t_window *window;
-	window = (t_window*) ft_calloc(1, sizeof(t_window));
-	if (!window)
-	{
-		ft_printf("Error\n %s\n", strerror(ENOMEM));
-		exit (EXIT_FAILURE);
-	}
-	open_window(window, map->rows, map->cols);	
-
-	img_generate(map, window);
-
-	mlx_loop_hook(window->mlx_ptr, &handle_no_event, &window);
-	mlx_key_hook(window->win_ptr, &handle_input, &window);
-
-	mlx_loop(window->mlx_ptr);
-
-	mlx_destroy_display(window->mlx_ptr);
-	free(window->mlx_ptr);*/
 }
 
 

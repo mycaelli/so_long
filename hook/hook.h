@@ -1,3 +1,5 @@
+#include "../window/window.h"
+#include "../sprites/sprites.h"
 #include <X11/keysym.h>
 #include "../window/window.h"
 

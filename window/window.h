@@ -3,6 +3,7 @@
 # define SO_LONG_H
 
 #include "../map/map.h"
+//#include "../sprites/sprites.h"
 #include <stdlib.h>
 #include <stddef.h> //size_t ?
 #include <mlx.h>
@@ -18,6 +19,7 @@ typedef struct s_window
 	size_t	cols;
 	size_t	rows;
 	t_map	*map;
+	void	**sprites;
 }	t_window;
 
 int	open_window(t_window *window, int rows, int cols);
