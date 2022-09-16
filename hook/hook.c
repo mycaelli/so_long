@@ -14,3 +14,11 @@ int	close_win(int keysym, t_window *window)
 	}
 	return (0);
 }
+
+//int	move_left(int keysym, t_window *window)
+//{
+//	if (keysym == XK_A) // trocar por minusculo
+//	{
+//
+//	}
+//}

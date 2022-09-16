@@ -1,6 +1,6 @@
-#ifndef SO_LONG_H
+#ifndef WINDOW_H
 
-# define SO_LONG_H
+# define WINDOW_H //CHECAR TOODOOOOOOS
 
 #include "../map/map.h"
 //#include "../sprites/sprites.h"
@@ -20,6 +20,9 @@ typedef struct s_window
 	size_t	rows;
 	t_map	*map;
 	void	**sprites;
+	int		character_x;
+	int		character_y;
+	int		collected;
 }	t_window;
 
 int	open_window(t_window *window, int rows, int cols);
