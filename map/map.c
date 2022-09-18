@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/13 06:06:24 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/18 20:50:36 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	map_generate(char *file_path, t_map *map)
 	pos[0] = 0;
 	pos[1] = 0;
 	count = map->rows;
+	map->collectibles = 0;
 	fd = map_open(file_path);
 	check = ft_calloc(4, sizeof(int));
 	while (count)
@@ -90,6 +91,14 @@ void	map_generate(char *file_path, t_map *map)
 		{
 			map->data[pos[0]][pos[1]] = line[pos[1]];
 			check_chars(line[pos[1]], check);
+			if (line[pos[1]] == 'P') {
+				map->old_pos_character[0] = pos[0];
+				map->old_pos_character[1] = pos[1];
+				map->new_pos_character[0] = pos[0];
+				map->new_pos_character[1] = pos[1];
+			}
+			if (line[pos[1]] == 'C') 
+				map->collectibles++;
 		}
 		free(line);
 		pos[0]++;

@@ -14,10 +14,16 @@ typedef struct s_sprite
 	void	*img;
 }	t_sprite;
 
+#define WALL				0
+#define FLOOR				1	
+#define COLLECTIBLE			2
+#define DOOR				3
+#define CHARACTER			4
+
 
 //void img_generate(t_map *map, t_window *window);
-void 	img_generate(t_map *map, t_window *window);
-void	put_sprites(t_map *map, t_window *window);
+void 	img_generate(t_window *window);	
+void	put_sprites(t_window *window);
 void	img_free(t_window *window);
 
 

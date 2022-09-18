@@ -39,13 +39,11 @@ int main(int argc, char *argv[])
 	}
 	open_window(window, map->rows, map->cols);
 	window->map = map;
-	find_character(window);
+	//printf("%d %d\n", window->character_x, window->character_y); // NAO TA ACHANDO
 
-	img_generate(map, window);
+	img_generate(window);
 	/*GAME*/
-	
-	mlx_hook(window->win_ptr, 2, 1L<<0, close_win, window);
-	//key_hook(int keycode,void *param);
+	mlx_hook(window->win_ptr, 2, 1L<<0, key_input, window);
 
 	mlx_loop(window->mlx_ptr);
 }

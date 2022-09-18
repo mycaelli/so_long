@@ -15,11 +15,17 @@
 #include <string.h>
 #include <errno.h>
 
+#define	X 0
+#define	Y 1
+
 typedef struct s_map
 {
 	char	**data;
 	int		rows;
 	int		cols;
+	int		old_pos_character[2];
+	int		new_pos_character[2];
+	int		collectibles;
 }	t_map;
 
 void	map_size(char *file_path, t_map *map);

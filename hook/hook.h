@@ -1,5 +1,6 @@
 #include "../window/window.h"
 #include "../sprites/sprites.h"
+#include "../movements/movements.h"
 //#include <X11/keysym.h> //EXCLUIR
 #include "../window/window.h"
 
@@ -14,4 +15,7 @@
 #define XK_w                             0x0077  /* U+0077 LATIN SMALL LETTER W */
 #define XK_s                             0x0073  /* U+0073 LATIN SMALL LETTER S */
 
-int	close_win(int keysym, t_window *window);
+void	close_win(t_window *window);
+int	key_input(int key, t_window *window);
+void	move_character(t_window *window);
+char	find_wall(int key, t_window *window);

@@ -20,8 +20,6 @@ typedef struct s_window
 	size_t	rows;
 	t_map	*map;
 	void	**sprites;
-	int		character_x;
-	int		character_y;
 	int		collected;
 }	t_window;
 

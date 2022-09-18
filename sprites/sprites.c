@@ -1,6 +1,6 @@
 #include "sprites.h"
 
-void 	img_generate(t_map *map, t_window *window)
+void 	img_generate(t_window *window)
 {	
 	t_sprite *wall;
 	t_sprite *floor;
@@ -44,35 +44,38 @@ void 	img_generate(t_map *map, t_window *window)
 		printf("AQUI\n");
 		exit (EXIT_FAILURE);
 	} 
-	window->sprites[0] = wall->img;
-	window->sprites[1] = floor->img;
-	window->sprites[2] = collectible->img;
-	window->sprites[3] = door->img;
-	window->sprites[4] = character->img;
-	put_sprites(map, window);
+	window->sprites[WALL] = wall->img;
+	window->sprites[FLOOR] = floor->img;
+	window->sprites[COLLECTIBLE] = collectible->img;
+	window->sprites[DOOR] = door->img;
+	window->sprites[CHARACTER] = character->img;
+	put_sprites(window);
 }
 
-void	put_sprites(t_map *map, t_window *window)
+void	put_sprites(t_window *window)
 {
 	int x;
 	int y;
 
 	x = 0;
-	while (x < map->rows)
+	while (x < window->map->rows)
 	{
 		y = 0;
-		while (y < map->cols)
+		while (y < window->map->cols)
 		{
-			if (map->data[x][y] == '0')
-				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[1], x * 32, y * 32);
-			else if (map->data[x][y] == '1')
-				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[0], x * 32, y * 32);
-			else if (map->data[x][y] == 'P')
-				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[4], x * 32, y * 32);
-			else if (map->data[x][y] == 'C')
-				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[2], x * 32, y * 32);
-			else if (map->data[x][y] == 'E')
-				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[3], x * 32, y * 32);
+			if (window->map->data[x][y] == '0')
+			{
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[FLOOR], x * 32, y * 32);
+				//mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[DOOR], x * 32, y * 32);
+			}
+			else if (window->map->data[x][y] == '1')
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[WALL], x * 32, y * 32);
+			else if (window->map->data[x][y] == 'P')
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[CHARACTER], x * 32, y * 32);
+			else if (window->map->data[x][y] == 'C')
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[COLLECTIBLE], x * 32, y * 32);
+			else if (window->map->data[x][y] == 'E')
+				mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[DOOR], x * 32, y * 32);
 			y++;
 		}
 		x++;
@@ -81,11 +84,11 @@ void	put_sprites(t_map *map, t_window *window)
 
 void	img_free(t_window *window)
 {
-	mlx_destroy_image(window->mlx_ptr, window->sprites[0]);
-	mlx_destroy_image(window->mlx_ptr, window->sprites[1]);
-	mlx_destroy_image(window->mlx_ptr, window->sprites[2]);
-	mlx_destroy_image(window->mlx_ptr, window->sprites[3]);
-	mlx_destroy_image(window->mlx_ptr, window->sprites[4]);
+	mlx_destroy_image(window->mlx_ptr, window->sprites[WALL]);
+	mlx_destroy_image(window->mlx_ptr, window->sprites[FLOOR]);
+	mlx_destroy_image(window->mlx_ptr, window->sprites[COLLECTIBLE]);
+	mlx_destroy_image(window->mlx_ptr, window->sprites[DOOR]);
+	mlx_destroy_image(window->mlx_ptr, window->sprites[CHARACTER]);
 
 	free(window->sprites);
 }
