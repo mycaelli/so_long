@@ -76,11 +76,13 @@ void	move_character(t_window *window)
 		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[CHARACTER], character_x * 32, character_y * 32);
 		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[FLOOR], obj_x * 32, obj_y * 32);
 		window->collected++;
+		print_movements(window);
 	}
 	else if (window->map->data[character_x][character_y] == '0')
 	{
 		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[CHARACTER], character_x * 32, character_y * 32);
 		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->sprites[FLOOR], obj_x * 32, obj_y * 32);	
+		print_movements(window);
 	}
 //	else if (window->map->data[character_x][character_y] == 'E')
 //	{
@@ -90,4 +92,10 @@ void	move_character(t_window *window)
 //	}
 	window->map->old_pos_character[X] = window->map->new_pos_character[X];
 	window->map->old_pos_character[Y] = window->map->new_pos_character[Y];
+}
+
+void	print_movements(t_window *window)
+{
+	window->movements++;
+	ft_printf("Number of movements is: %d\n", window->movements);
 }

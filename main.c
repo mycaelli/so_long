@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 	}
 	open_window(window, map->rows, map->cols);
 	window->map = map;
-	//printf("%d %d\n", window->character_x, window->character_y); // NAO TA ACHANDO
+	window->movements = 0;
 
 	img_generate(window);
 	/*GAME*/

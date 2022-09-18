@@ -21,6 +21,7 @@ typedef struct s_window
 	t_map	*map;
 	void	**sprites;
 	int		collected;
+	int		movements;
 }	t_window;
 
 int	open_window(t_window *window, int rows, int cols);

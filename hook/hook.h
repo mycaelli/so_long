@@ -19,3 +19,4 @@ void	close_win(t_window *window);
 int	key_input(int key, t_window *window);
 void	move_character(t_window *window);
 char	find_wall(int key, t_window *window);
+void	print_movements(t_window *window);

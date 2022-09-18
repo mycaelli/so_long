@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 01:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/08/05 19:06:44 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:45:45 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	format_specifier(char c, va_list args)
 		return (ft_printf_char(va_arg(args, int)));
 	if (c == 's')
 		return (ft_printf_str(va_arg(args, char *)));
+	if (c == 'i' || c == 'd')
+		return (ft_printf_signed_int(va_arg(args, int)));
 	return (-1);
 }
 
