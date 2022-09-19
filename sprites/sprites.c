@@ -32,16 +32,9 @@ void 	img_generate(t_game *game)
 	collectible->img = mlx_xpm_file_to_image(game->mlx_ptr, collectible->path, &collectible->width, &collectible->height);
 	door->img = mlx_xpm_file_to_image(game->mlx_ptr, door->path, &door->width, &door->height);
 
-	free(wall);
-	free(floor);
-	free(character);
-	free(collectible);
-	free(door);
-
 	if (!wall->img || !floor->img || !character->img || !collectible->img || !door->img)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
-		printf("AQUI\n");
 		exit (EXIT_FAILURE);
 	} 
 	game->sprites[WALL] = wall->img;
@@ -49,6 +42,13 @@ void 	img_generate(t_game *game)
 	game->sprites[COLLECTIBLE] = collectible->img;
 	game->sprites[DOOR] = door->img;
 	game->sprites[CHARACTER] = character->img;
+
+	free(wall);
+	free(floor);
+	free(character);
+	free(collectible);
+	free(door);
+	
 	put_sprites(game);
 }
 
