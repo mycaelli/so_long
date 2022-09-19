@@ -17,7 +17,8 @@ int	key_input(int key, t_game *game)
 		game->map->new_pos_character[Y]--;
 	else if (key == XK_s && find != 'D')
 		game->map->new_pos_character[Y]++;
-	move_character(game);
+	if (find == '0')
+		move_character(game);
 	return (0);
 }
 
@@ -63,12 +64,8 @@ void	close_win(t_game *game)
 
 void	move_character(t_game *game)
 {
-	// CHARACTER DESAPARECE QUANDO TENTA ENTRAR NA PAREDE
-		// MAS ELE SEGUE NA POS CERTA
-			// QUANDO ESSE PROBLEMA OCORRE AS VEZES O NUMERO DE COLETADOS E COLETAVEIS NAO BATE
+			// AS VEZES O NUMERO DE COLETADOS E COLETAVEIS NAO BATE
 			// MESMO TENDO COLETADO TODAS AS ABOBORAS
-	
-	// CONTA COMO MOVIMENTO QUANDO EU CLICO EM QUALQUER TECLA
 
 	int new_x;
 	int new_y;
