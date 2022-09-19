@@ -80,16 +80,26 @@ void	move_character(t_game *game)
 	}
 	else if (game->map->data[character_x][character_y] == '0')
 	{
+		printf("AQUI\n");
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], character_x * 32, character_y * 32);
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], obj_x * 32, obj_y * 32);	
 		print_movements(game);
 	}
-//	else if (game->map->data[character_x][character_y] == 'E')
-//	{
-//		if (game->map->collectibles == game->collected)
-//			//END GAME
-//		return ;
-//	}
+	else if (game->map->data[character_x][character_y] == 'E')
+	{
+		if (game->map->collectibles == game->collected)
+		{
+			ft_printf("GAME OVER\n CONGRATS!\n");
+			close_win(game);
+		}
+		else 
+		{
+			ft_printf("You must collect all pumpkins before going back home\n");
+			game->map->new_pos_character[X] = game->map->old_pos_character[X];
+			game->map->new_pos_character[Y] = game->map->old_pos_character[Y];
+			return ;
+		}
+	}
 	game->map->old_pos_character[X] = game->map->new_pos_character[X];
 	game->map->old_pos_character[Y] = game->map->new_pos_character[Y];
 }
