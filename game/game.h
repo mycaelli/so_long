@@ -1,6 +1,6 @@
-#ifndef WINDOW_H
+#ifndef game_H
 
-# define WINDOW_H //CHECAR TOODOOOOOOS
+# define game_H //CHECAR TOODOOOOOOS
 
 #include "../map/map.h"
 //#include "../sprites/sprites.h"
@@ -12,7 +12,7 @@
 
 #define WIN_SIZE	32
 
-typedef struct s_window
+typedef struct s_game
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -22,7 +22,7 @@ typedef struct s_window
 	void	**sprites;
 	int		collected;
 	int		movements;
-}	t_window;
+}	t_game;
 
-int	open_window(t_window *window, int rows, int cols);
+int	open_game(t_game *game, int rows, int cols);
 #endif

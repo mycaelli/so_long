@@ -2,10 +2,10 @@
 
 # define MOVEMENTS_H
 
-#include "../window/window.h"
+#include "../game/game.h"
 #include "../sprites/sprites.h"
 
-void	move_left(t_window *window);
-void	move_right(t_window *window);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
 
 #endif

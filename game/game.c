@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   game.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,26 +11,26 @@
 /* ************************************************************************** */
 
 
-#include "window.h"
+#include "game.h"
 
-int	open_window(t_window *window, int rows, int cols)
+int	open_game(t_game *game, int rows, int cols)
 {
 	// inicial
 // abrir janela (qual tamanho?)iza a lib MLX 
-	window->mlx_ptr = mlx_init();
-	//printf("%zu\n", window->rows);
-	if (!window->mlx_ptr)
+	game->mlx_ptr = mlx_init();
+	//printf("%zu\n", game->rows);
+	if (!game->mlx_ptr)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	window->cols = WIN_SIZE * cols;
-	window->rows = WIN_SIZE * rows;
+	game->cols = WIN_SIZE * cols;
+	game->rows = WIN_SIZE * rows;
 	// cria uma nov janela, retorna um ponteiro para a janela
-	window->win_ptr = mlx_new_window(window->mlx_ptr, window->rows, window->cols, "Cat window"); //tamanho da janela?
-	if (!window->win_ptr)
+	game->win_ptr = mlx_new_window(game->mlx_ptr, game->rows, game->cols, "Cat game"); //tamanho da janela?
+	if (!game->win_ptr)
 	{
-		free(window->win_ptr);
+		free(game->win_ptr);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}

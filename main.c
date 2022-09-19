@@ -1,4 +1,4 @@
-#include "window/window.h"
+#include "game/game.h"
 #include "map/map.h"
 #include "sprites/sprites.h"
 #include "hook/hook.h"
@@ -30,22 +30,22 @@ int main(int argc, char *argv[])
 
 
 	/*GAME*/
-	t_window *window;
-	window = (t_window*) ft_calloc(1, sizeof(t_window));
-	if (!window)
+	t_game *game;
+	game = (t_game*) ft_calloc(1, sizeof(t_game));
+	if (!game)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	open_window(window, map->rows, map->cols);
-	window->map = map;
-	window->movements = 0;
+	open_game(game, map->rows, map->cols);
+	game->map = map;
+	game->movements = 0;
 
-	img_generate(window);
+	img_generate(game);
 	/*GAME*/
-	mlx_hook(window->win_ptr, 2, 1L<<0, key_input, window);
+	mlx_hook(game->win_ptr, 2, 1L<<0, key_input, game);
 
-	mlx_loop(window->mlx_ptr);
+	mlx_loop(game->mlx_ptr);
 }
 
 

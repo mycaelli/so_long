@@ -3,7 +3,7 @@
 
 # define SPRITES_H
 
-#include "../window/window.h"
+#include "../game/game.h"
 #include "../map/map.h"
 
 typedef struct s_sprite
@@ -21,10 +21,10 @@ typedef struct s_sprite
 #define CHARACTER			4
 
 
-//void img_generate(t_map *map, t_window *window);
-void 	img_generate(t_window *window);	
-void	put_sprites(t_window *window);
-void	img_free(t_window *window);
+//void img_generate(t_map *map, t_game *game);
+void 	img_generate(t_game *game);	
+void	put_sprites(t_game *game);
+void	img_free(t_game *game);
 
 
 //void	create_walls(t_game *game, t_wall *wall);
