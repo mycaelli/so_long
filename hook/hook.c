@@ -5,6 +5,8 @@ int	key_input(int key, t_game *game)
 	char find;
 	
 	find = find_wall(key, game);
+	if (key != XK_Escape && key != XK_a && key != XK_d && key != XK_w && key != XK_s)
+		return (0);
 	if (key == XK_Escape)
 		close_win(game);
 	else if (key == XK_a && find != 'L')
@@ -61,31 +63,24 @@ void	close_win(t_game *game)
 
 void	move_character(t_game *game)
 {
-	int character_x;
-	int character_y;
-	int obj_x;
-	int obj_y;
+	// CHARACTER DESAPARECE QUANDO TENTA ENTRAR NA PAREDE
+		// MAS ELE SEGUE NA POS CERTA
+			// QUANDO ESSE PROBLEMA OCORRE AS VEZES O NUMERO DE COLETADOS E COLETAVEIS NAO BATE
+			// MESMO TENDO COLETADO TODAS AS ABOBORAS
+	
+	// CONTA COMO MOVIMENTO QUANDO EU CLICO EM QUALQUER TECLA
 
+	int new_x;
+	int new_y;
+	int old_x;
+	int old_y;
 
-	character_x = game->map->new_pos_character[X];
-	character_y = game->map->new_pos_character[Y];
-	obj_x = game->map->old_pos_character[X];
-	obj_y = game->map->old_pos_character[Y];
-	if (game->map->data[character_x][character_y] == 'C')
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], character_x * 32, character_y * 32);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], obj_x * 32, obj_y * 32);
-		game->collected++;
-		print_movements(game);
-	}
-	else if (game->map->data[character_x][character_y] == '0')
-	{
-		printf("AQUI\n");
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], character_x * 32, character_y * 32);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], obj_x * 32, obj_y * 32);	
-		print_movements(game);
-	}
-	else if (game->map->data[character_x][character_y] == 'E')
+	new_x = game->map->new_pos_character[X];
+	new_y = game->map->new_pos_character[Y];
+	old_x = game->map->old_pos_character[X];
+	old_y = game->map->old_pos_character[Y];
+
+	if (game->map->data[new_x][new_y] == 'E')
 	{
 		if (game->map->collectibles == game->collected)
 		{
@@ -100,9 +95,47 @@ void	move_character(t_game *game)
 			return ;
 		}
 	}
+	else
+	{
+		if (game->map->data[new_x][new_y] == 'C')
+			game->collected++;
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], new_x * 32, new_y * 32);
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], old_x * 32, old_y * 32);
+		print_movements(game);
+	}
+
 	game->map->old_pos_character[X] = game->map->new_pos_character[X];
 	game->map->old_pos_character[Y] = game->map->new_pos_character[Y];
 }
+
+	//if (game->map->data[new_x][new_y] == 'C')
+	//{
+	//	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], new_x * 32, new_y * 32);
+	//	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], old_x * 32, old_y * 32);
+	//	game->collected++;
+	//}
+	//else if (game->map->data[new_x][new_y] == '0')
+	//{
+	//	printf("AQUI\n");
+	//	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[CHARACTER], new_x * 32, new_y * 32);
+	//	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->sprites[FLOOR], old_x * 32, old_y * 32);	
+	//	print_movements(game);
+	//} 
+	//else if (game->map->data[new_x][new_y] == 'E')
+	//{
+	//	if (game->map->collectibles == game->collected)
+	//	{
+	//		ft_printf("GAME OVER\n CONGRATS!\n");
+	//		close_win(game);
+	//	}
+	//	else 
+	//	{
+	//		ft_printf("You must collect all pumpkins before going back home\n");
+	//		game->map->new_pos_character[X] = game->map->old_pos_character[X];
+	//		game->map->new_pos_character[Y] = game->map->old_pos_character[Y];
+	//		return ;
+	//	}
+	//}
 
 void	print_movements(t_game *game)
 {
