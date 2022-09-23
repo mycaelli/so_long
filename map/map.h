@@ -1,6 +1,14 @@
-// cc -lX11 -lXext -lmlx -Wall -Wextra -Werror get_next_line/get_next_line_utils.c  get_next_line/get_next_line.c map.c && ./a.out ./maps_fi./maps_files/map_0.berles/map_0.ber
-
-// ./so_long.out ./maps_files/map_0.ber
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 04:05:00 by mcerquei          #+#    #+#             */
+/*   Updated: 2022/09/19 04:07:32 by mcerquei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MAP_H
 
@@ -8,15 +16,15 @@
 
 # include <stdio.h> // APAGAAAAR
 # include <fcntl.h>
-#include "../libft/libft.h"
-#include <stdlib.h>
-#include <stddef.h> //size_t ?
-#include <mlx.h>
-#include <string.h>
-#include <errno.h>
+# include "../libft/libft.h"
+# include <stdlib.h>
+# include <stddef.h> //size_t ?
+# include <mlx.h>
+# include <string.h>
+# include <errno.h>
 
-#define	X 0
-#define	Y 1
+# define X 0
+# define Y 1
 
 typedef struct s_map
 {

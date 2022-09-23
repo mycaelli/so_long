@@ -2,7 +2,9 @@
 #include "map/map.h"
 #include "sprites/sprites.h"
 #include "hook/hook.h"
-#include "movements/movements.h"
+
+int    ft_close(t_game *game);
+
 
 int main(int argc, char *argv[])
 {	
@@ -40,12 +42,11 @@ int main(int argc, char *argv[])
 	open_game(game, map->rows, map->cols);
 	game->map = map;
 	game->movements = 0;
-
 	img_generate(game);
-	/*GAME*/
-	mlx_hook(game->win_ptr, 2, 1L<<0, key_input, game);
 
+	mlx_expose_hook(game->win_ptr, put_sprites, game);
+	mlx_hook(game->win_ptr, 2, 1L<<0, key_input, game);
+	mlx_hook(game->win_ptr, 17, 0, close_win, game);
 	mlx_loop(game->mlx_ptr);
 }
-
 

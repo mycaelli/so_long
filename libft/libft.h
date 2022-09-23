@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 20:15:58 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/19 01:47:47 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/19 04:46:17 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ char	*get_remainder(char *str);
 
 char	*new_buffer(int buffer_size);
 
-int	ft_printf(const char *str_format, ...);
+int		ft_printf(const char *str_format, ...);
 
-int	ft_printf_str(char *s);
+int		ft_printf_str(char *s);
 
-int	ft_printf_char(char c);
+int		ft_printf_char(char c);
 
-int	ft_printf_signed_int(int n);
+int		ft_printf_signed_int(int n);
 
 char	*ft_itoa(int n);
 

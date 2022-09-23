@@ -6,10 +6,9 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/18 20:50:36 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/19 04:00:22 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "map.h"
 
@@ -17,7 +16,7 @@ int	map_open(char*file_path)
 {
 	int			fd;
 
-	fd = open(file_path, O_RDONLY); //CLOSE FILES
+	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOENT));
@@ -26,7 +25,7 @@ int	map_open(char*file_path)
 	return (fd);
 }
 
-void	map_size(char *file_path, t_map *map) 
+void	map_size(char *file_path, t_map *map)
 {
 	char		*line;
 	int			fd;
@@ -48,10 +47,10 @@ void	map_size(char *file_path, t_map *map)
 
 void	map_initialize(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	map->data = ft_calloc(sizeof(char*), map->rows);
+	map->data = ft_calloc(sizeof(char *), map->rows);
 	if (!map->data)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
@@ -59,7 +58,7 @@ void	map_initialize(t_map *map)
 	}
 	while (i < map->rows)
 	{
-		map->data[i] = ft_calloc(sizeof(char*), map->cols);
+		map->data[i] = ft_calloc(sizeof(char *), map->cols);
 		i++;
 	}
 	if (!*(map->data))
@@ -91,13 +90,14 @@ void	map_generate(char *file_path, t_map *map)
 		{
 			map->data[pos[0]][pos[1]] = line[pos[1]];
 			check_chars(line[pos[1]], check);
-			if (line[pos[1]] == 'P') {
+			if (line[pos[1]] == 'P')
+			{
 				map->old_pos_character[0] = pos[0];
 				map->old_pos_character[1] = pos[1];
 				map->new_pos_character[0] = pos[0];
 				map->new_pos_character[1] = pos[1];
 			}
-			if (line[pos[1]] == 'C') 
+			if (line[pos[1]] == 'C')
 				map->collectibles++;
 		}
 		free(line);
@@ -113,9 +113,9 @@ void	map_generate(char *file_path, t_map *map)
 
 void	map_free(t_map *map)
 {
-	int k;
-	k = 0;
+	int	k;
 
+	k = 0;
 	while (k < map->rows)
 	{
 		free(map->data[k]);

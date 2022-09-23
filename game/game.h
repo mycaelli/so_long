@@ -1,16 +1,27 @@
-#ifndef game_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/19 04:43:07 by mcerquei          #+#    #+#             */
+/*   Updated: 2022/09/19 04:44:42 by mcerquei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# define game_H //CHECAR TOODOOOOOOS
+#ifndef GAME_H
 
-#include "../map/map.h"
-//#include "../sprites/sprites.h"
-#include <stdlib.h>
-#include <stddef.h> //size_t ?
-#include <mlx.h>
-#include <string.h>
-#include <errno.h>
+# define GAME_H
 
-#define WIN_SIZE	32
+# include "../map/map.h"
+# include <stdlib.h>
+# include <stddef.h> //size_t ?
+# include <mlx.h>
+# include <string.h>
+# include <errno.h>
+
+# define WIN_SIZE	32
 
 typedef struct s_game
 {
@@ -25,4 +36,5 @@ typedef struct s_game
 }	t_game;
 
 int	open_game(t_game *game, int rows, int cols);
+
 #endif
