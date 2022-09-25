@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/26 01:02:16 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:03:36 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,7 @@ int find_items(t_map *map)
 				if (map_path(map, map->old_pos_character[0], map->old_pos_character[1], x, y) == 0)
 				{
 					map_free(map);
-					return (0);git
+					return (0);
 				}
 			}
 			y++;
