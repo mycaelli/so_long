@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:41:01 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/19 04:42:56 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:27:43 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	open_game(t_game *game, int rows, int cols)
 	}
 	game->cols = WIN_SIZE * cols;
 	game->rows = WIN_SIZE * rows;
+	
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
-			game->rows, game->cols, "Ghost & Pumpikins");
+			game->cols, game->rows, "Ghost & Pumpikins");
 	if (!game->win_ptr)
 	{
 		free(game->win_ptr);

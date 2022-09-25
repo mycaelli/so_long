@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:26:04 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/23 22:35:17 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:28:22 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	put_sprites(t_game *game)
 	int	x;
 	int	y;
 
-	x = 0;
+/*	x = 0;
 	while (x < game->map->rows)
 	{
 		y = 0;
@@ -91,6 +91,58 @@ int	put_sprites(t_game *game)
 			else if (game->map->data[x][y] == 'E')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 					game->sprites[DOOR], x * 32, y * 32);
+			y++;
+		}
+		x++;
+	} */
+
+	/*y = 0;
+	while (y < game->map->cols)
+	{
+		x = 0;
+		while (x < game->map->rows)
+		{
+			if (game->map->data[y][x] == '0')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[FLOOR], x * 32, y * 32);
+			else if (game->map->data[y][x] == '1')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[WALL], x * 32, y * 32);
+			else if (game->map->data[y][x] == 'P')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[CHARACTER], x * 32, y * 32);
+			else if (game->map->data[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[COLLECTIBLE], x * 32, y * 32);
+			else if (game->map->data[y][x] == 'E')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[DOOR], x * 32, y * 32);
+			x++;
+		}
+		y++;
+	}*/
+
+	x = 0;
+	while (x < game->map->rows)
+	{
+		y = 0;
+		while (y < game->map->cols)
+		{
+			if (game->map->data[x][y] == '0')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[FLOOR], y * 32, x * 32);
+			else if (game->map->data[x][y] == '1')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[WALL], y * 32, x * 32);
+			else if (game->map->data[x][y] == 'P')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[CHARACTER], y * 32, x * 32);
+			else if (game->map->data[x][y] == 'C')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[COLLECTIBLE], y * 32, x * 32);
+			else if (game->map->data[x][y] == 'E')
+				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+					game->sprites[DOOR], y * 32, x * 32);
 			y++;
 		}
 		x++;

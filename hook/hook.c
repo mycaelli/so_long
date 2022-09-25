@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:33:19 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/23 22:18:14 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:58:00 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	key_input(int key, t_game *game)
 		return (0);
 	if (key == XK_ESCAPE)
 		close_win(game);
-	else if (key == XK_A && find != 'L')
+	else if (key == XK_W && find != 'L')
 		game->map->new_pos_character[X]--;
-	else if (key == XK_D && find != 'R')
+	else if (key == XK_S && find != 'R')
 		game->map->new_pos_character[X]++;
-	else if (key == XK_W && find != 'U')
+	else if (key == XK_A && find != 'U')
 		game->map->new_pos_character[Y]--;
-	else if (key == XK_S && find != 'D')
+	else if (key == XK_D && find != 'D')
 		game->map->new_pos_character[Y]++;
 	if (find == '0')
 		move_character(game);
@@ -41,22 +41,22 @@ char	find_wall(int key, t_game *game)
 
 	wall_pos[X] = game->map->old_pos_character[X];
 	wall_pos[Y] = game->map->old_pos_character[Y];
-	if (key == XK_A)
+	if (key == XK_W)
 	{
 		if (game->map->data[wall_pos[X] - 1][wall_pos[Y]] == '1')
 			return ('L');
 	}
-	else if (key == XK_D)
+	else if (key == XK_S)
 	{
 		if (game->map->data[wall_pos[X] + 1][wall_pos[Y]] == '1')
 			return ('R');
 	}
-	else if (key == XK_W)
+	else if (key == XK_A)
 	{
 		if (game->map->data[wall_pos[X]][wall_pos[Y] - 1] == '1')
 			return ('U');
 	}
-	else if (key == XK_S)
+	else if (key == XK_D)
 	{
 		if (game->map->data[wall_pos[X]][wall_pos[Y] + 1] == '1')
 			return ('D');
@@ -110,10 +110,10 @@ void	move_character(t_game *game)
 			game->map->data[new_x][new_y] = '0';
 		}
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->sprites[CHARACTER], new_x * 32, new_y * 32);
+			game->sprites[CHARACTER], new_y * 32, new_x * 32);
 			game->map->data[new_x][new_y] = 'P';
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-			game->sprites[FLOOR], old_x * 32, old_y * 32);
+			game->sprites[FLOOR], old_y * 32, old_x * 32);
 			game->map->data[old_x][old_y] = '0';
 		print_movements(game);
 	}

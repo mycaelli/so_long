@@ -28,6 +28,12 @@ int main(int argc, char *argv[])
 	map_size(argv[1], map);
 	map_initialize(map);
 	map_generate(argv[1], map);
+	find_character(map);
+
+	if (find_items(map) == 0){
+		ft_printf("ERRO\n");
+		exit(EXIT_FAILURE);
+	}
 	/*MAP*/
 
 
