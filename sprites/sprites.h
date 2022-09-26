@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:28:07 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/23 22:34:41 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:41:52 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 # define SPRITES_H
 
 # include "../game/game.h"
-# include "../map/map.h"
 
-typedef struct s_sprite
-{
-	char	*path;
-	int		width;
-	int		height;
-	void	*img;
-}	t_sprite;
+# define WALL_PATH			"/home/coder/so_long/sprites/images/wall/wall.xpm"
+# define FLOOR_PATH			"/home/coder/so_long/sprites/images/floor/floor.xpm"
+# define COLLECTIBLE_PATH 	"/home/coder/so_long/sprites/images/colle/colle.xpm"
+# define CHARACTER_PATH		"/home/coder/so_long/sprites/images/char/char.xpm"
+# define DOOR_PATH			"/home/coder/so_long/sprites/images/door/door.xpm"
 
 # define WALL				0
 # define FLOOR				1	
-# define COLLECTIBLE		2
+# define COLLECT			2
 # define DOOR				3
 # define CHARACTER			4
 
-void		img_generate(t_game *game);
-int	put_sprites(t_game *game);
+void	img_generate(t_game *game);
+
+int		put_sprites(t_game *game);
+
+void	put_sprites2(t_game *game, int x, int y);
+
 void	img_free(t_game *game);
 
 #endif
