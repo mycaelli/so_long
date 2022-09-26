@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:43:07 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/19 04:44:42 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:40:50 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 # define GAME_H
 
 # include "../map/map.h"
-# include <stdlib.h>
-# include <stddef.h> //size_t ?
-# include <mlx.h>
-# include <string.h>
-# include <errno.h>
 
 # define WIN_SIZE	32
 
@@ -35,6 +30,8 @@ typedef struct s_game
 	int		movements;
 }	t_game;
 
-int	open_game(t_game *game, int rows, int cols);
+int		open_game(t_game *game, int rows, int cols);
+
+void	create_game(t_game *game, t_map *map);
 
 #endif

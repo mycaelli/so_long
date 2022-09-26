@@ -6,11 +6,23 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:41:01 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/26 00:27:43 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:29:41 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
+
+void	create_game(t_game *game, t_map *map)
+{
+	if (!game)
+	{
+		ft_printf("Error\n %s\n", strerror(ENOMEM));
+		exit (EXIT_FAILURE);
+	}
+	open_game(game, map->rows, map->cols);
+	game->map = map;
+	game->movements = 0;
+}
 
 int	open_game(t_game *game, int rows, int cols)
 {
@@ -22,9 +34,8 @@ int	open_game(t_game *game, int rows, int cols)
 	}
 	game->cols = WIN_SIZE * cols;
 	game->rows = WIN_SIZE * rows;
-	
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
-			game->cols, game->rows, "Ghost & Pumpikins");
+			game->cols, game->rows, "Pumpikim Obssession");
 	if (!game->win_ptr)
 	{
 		free(game->win_ptr);

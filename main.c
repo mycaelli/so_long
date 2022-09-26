@@ -35,20 +35,14 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	/*MAP*/
-
+	t_game *game;
+	game = (t_game*) ft_calloc(1, sizeof(t_game));	
+	create_game(game, map);
+	img_generate(game);
+	
 
 	/*GAME*/
-	t_game *game;
-	game = (t_game*) ft_calloc(1, sizeof(t_game));
-	if (!game)
-	{
-		ft_printf("Error\n %s\n", strerror(ENOMEM));
-		exit (EXIT_FAILURE);
-	}
-	open_game(game, map->rows, map->cols);
-	game->map = map;
-	game->movements = 0;
-	img_generate(game);
+
 
 	mlx_expose_hook(game->win_ptr, put_sprites, game);
 	mlx_hook(game->win_ptr, 2, 1L<<0, key_input, game);

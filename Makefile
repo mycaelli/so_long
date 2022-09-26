@@ -9,7 +9,7 @@ X_FLAGS = -lX11 -lXext -lmlx
 
 RM = rm -rf
 
-SRC =   map/map.c game/game.c map/map_errors.c sprites/sprites.c hook/hook.c main.c 
+SRC =   map/map.c game/game.c map/map_errors.c sprites/sprites.c hook/hook.c hook/apply_hook.c main.c 
 
 OBJ = $(SRC:%.c=%.o)
 

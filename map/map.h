@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 04:05:00 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/25 23:59:19 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 01:41:21 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 # define MAP_H
 
-# include <stdio.h> // APAGAAAAR
 # include <fcntl.h>
-# include "../libft/libft.h"
-# include <stdlib.h>
-# include <stddef.h> //size_t ?
-# include <mlx.h>
 # include <string.h>
+# include <mlx.h>
 # include <errno.h>
+# include "../libft/libft.h"
 
 # define X 0
 # define Y 1
