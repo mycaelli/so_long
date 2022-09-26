@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 03:50:32 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/19 03:56:00 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/26 04:39:47 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_valid_char(int *check)
 	if (check[0] == 0 || check[1] == 0 || check[2] == 0)
 	{
 		ft_printf("Error\n");
-		ft_printf("The map must contain at least 1 character C, E and P\\n");
+		ft_printf("The map must contain at least 1 character C, E and P\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (check[3] > 0)
@@ -59,12 +59,17 @@ void	check_walls(t_map *map)
 		if (i == 0 && j == 0)
 			return ;
 	}
-	if (map->data[i][j] != 'E' && map->data[i][j] != 'P' &&
-	map->data[i][j] != 'C' && map->data[i][j] != '1' && map->data[i][j] != '0')
+	print_errors(map->data[i][j]);
+	exit(EXIT_FAILURE);
+}
+
+void	print_errors(char c)
+{
+	if (c != 'E' && c != 'P'
+		&& c != 'C' && c != '1' && c != '0')
 	{
 		ft_printf("Error\n Map is not rectangular\n");
 		exit(EXIT_FAILURE);
 	}
 	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
-	exit(EXIT_FAILURE);
 }
