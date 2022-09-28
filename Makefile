@@ -1,8 +1,7 @@
-NAME = so_long.out
+NAME = so_long
 
 CC = cc
 
-# ACRESCENTAR AS OUTRAS FLAGS DE COMPILACAO!!!!!!!
 CFLAGS = -Wall -Wextra -Werror
 
 X_FLAGS = -lX11 -lXext -lmlx
@@ -19,13 +18,7 @@ CLEAN_LIBFT = cd libft && make clean
 
 FCLEAN_LIBFT = cd libft && make fclean
 
-$(NAME): $(OBJ)
-
-# CHECAR SE MAKEFILE TA RELINKING
-
-# ADD AS RULES QUE FALTAM
-
-$(OBJ): $(LIBFT_A)
+$(NAME):  $(LIBFT_A) $(OBJ)
 	$(CC) $(CFLAGS) $(SRC) $(LIBFT_A) $(X_FLAGS) -o $(NAME) -g
 
 $(LIBFT_A):
