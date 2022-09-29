@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/26 04:42:00 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:59:53 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	map_initialize(t_map *map)
 	i = 0;
 	map->data = ft_calloc(sizeof(char *), map->rows);
 	map->map_aux = ft_calloc(sizeof(char *), map->rows);
-	if (!map->data)
+	if (!map->data || !map->map_aux)
 	{
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);

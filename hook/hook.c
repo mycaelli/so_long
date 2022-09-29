@@ -63,3 +63,22 @@ int	key_input(int key, t_game *game)
 		move_character(game);
 	return (0);
 }
+
+void	invalid_path(t_game *game, t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->rows)
+	{
+		free(map->map_aux[i]);
+		i++;
+	}
+	free(map->map_aux);
+	free(map);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	free(game);
+	exit(EXIT_SUCCESS);
+}

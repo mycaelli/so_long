@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 03:53:39 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/26 04:30:38 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:07:48 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,10 @@ int	find_items(t_map *map)
 void	map_free(t_map *map)
 {
 	int	i;
+	int j;
 
 	i = 0;
+	j = 0;
 	while (i < map->rows)
 	{
 		free(map->data[i]);
