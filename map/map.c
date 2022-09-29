@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 05:42:21 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/29 20:59:53 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:02:28 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ int	map_generate(char *file_path, t_map *map)
 	fd = map_open(file_path);
 	check = ft_calloc(4, sizeof(int));
 	map_insertion(map, line, check, fd);
-	check_valid_char(check);
-	check_walls(map);
-	free(check);
 	line = get_next_line(fd, 1);
 	free(line);
+	check_valid_char(check);
+	free(check);
+	check_walls(map);
 	return (1);
 }
 

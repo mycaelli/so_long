@@ -6,7 +6,7 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 03:50:32 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/26 04:39:47 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:04:18 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ void	check_valid_char(int *check)
 	{
 		ft_printf("Error\n");
 		ft_printf("The map must contain at least 1 character C, E and P\n");
+//		map_free(map);
 		exit(EXIT_FAILURE);
 	}
 	else if (check[3] > 0)
 	{
 		ft_printf("Error\n Invalid character on map\n");
+//		map_free(map);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -60,6 +62,7 @@ void	check_walls(t_map *map)
 			return ;
 	}
 	print_errors(map->data[i][j]);
+	map_free(map);
 	exit(EXIT_FAILURE);
 }
 
