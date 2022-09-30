@@ -112,6 +112,5 @@ void	map_insertion(t_map *map, char	*line, int	*check, int fd)
 	free(line);
 	check_valid_char(map, check);
 	free(check);
-	check_rect(map);
 	check_walls(map);
 }

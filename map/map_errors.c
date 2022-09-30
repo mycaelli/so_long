@@ -50,6 +50,7 @@ void	check_walls(t_map *map)
 
 	j = 0;
 	i = 0;
+	check_rect(map);
 	while (map->data[i][j] == '1')
 	{
 		if (i == 0 && j < map->cols - 1)
@@ -70,14 +71,13 @@ void	check_walls(t_map *map)
 
 void	check_rect(t_map *map)
 {
-	int i;
+	int	i;
 	int	j;
-	int line_size;
+	int	line_size;
 
 	i = 0;
 	j = 0;
 	line_size = 0;
-	
 	while (i < map->rows)
 	{
 		while (map->data[i][j] != '\n' && map->data[i][j] != '\0')
