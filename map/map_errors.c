@@ -41,7 +41,6 @@ void	check_valid_char(t_map *map, int *check)
 		free(check);
 		exit(EXIT_FAILURE);
 	}
-	//free(check);
 }
 
 void	check_walls(t_map *map)
