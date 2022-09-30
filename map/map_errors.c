@@ -24,21 +24,24 @@ void	check_chars(char c, int *check)
 		check[3]++;
 }
 
-void	check_valid_char(int *check)
+void	check_valid_char(t_map *map, int *check)
 {
 	if (check[0] == 0 || check[1] == 0 || check[2] == 0)
 	{
 		ft_printf("Error\n");
 		ft_printf("The map must contain at least 1 character C, E and P\n");
-//		map_free(map);
+		map_free(map);
+		free(check);
 		exit(EXIT_FAILURE);
 	}
 	else if (check[3] > 0)
 	{
 		ft_printf("Error\n Invalid character on map\n");
-//		map_free(map);
+		map_free(map);
+		free(check);
 		exit(EXIT_FAILURE);
 	}
+	//free(check);
 }
 
 void	check_walls(t_map *map)

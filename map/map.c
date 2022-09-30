@@ -83,9 +83,6 @@ int	map_generate(char *file_path, t_map *map)
 	map_insertion(map, line, check, fd);
 	line = get_next_line(fd, 1);
 	free(line);
-	check_valid_char(check);
-	free(check);
-	check_walls(map);
 	return (1);
 }
 
@@ -111,4 +108,8 @@ void	map_insertion(t_map *map, char	*line, int	*check, int fd)
 		pos[0]++;
 		count--;
 	}
+	line = get_next_line(fd, 1);
+	free(line);
+	check_valid_char(map, check);
+	check_walls(map);
 }
