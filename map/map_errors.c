@@ -73,33 +73,20 @@ void	check_rect(t_map *map)
 	int i;
 	int	j;
 	int line_size;
-	int	lines;
 
 	i = 0;
 	j = 0;
 	line_size = 0;
+	
 	while (i < map->rows)
 	{
-		if (i == 0 && j < map->cols - 1)
+		while (map->data[i][j] != '\n' && map->data[i][j] != '\0')
 		{
 			line_size++;
 			j++;
 		}
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (i < map->rows)
-	{
-		lines = 0;
-		while (j < map->cols)
+		if (line_size != map->cols)
 		{
-			lines++;
-			j++;
-		}
-		if (lines != line_size)
-		{
-			ft_printf("%d\n %d\n", lines, line_size);
 			ft_printf("Error\n Map is not rectangular\n");
 			map_free(map);
 			exit(EXIT_FAILURE);
