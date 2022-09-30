@@ -108,7 +108,7 @@ int	find_items(t_map *map)
 void	map_free(t_map *map)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;

@@ -57,15 +57,12 @@ void	check_walls(t_map *map)
 		else if (j == map->cols - 1 && i < map->rows - 1)
 			i++;
 		else if (i == map->rows - 1 && j > 0)
-			j--;		
+			j--;
 		else if (j == 0 && i > 0)
 			i--;
 		if (i == 0 && j == 0)
 			return ;
 	}
-	if (map->data[i][j] >= 0 && map->data[i][j] <= 31)
-		ft_printf("Error\n Map is not rectangular\n");
-	else
 	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
 	map_free(map);
 	exit(EXIT_FAILURE);
@@ -73,39 +70,40 @@ void	check_walls(t_map *map)
 
 void	check_rect(t_map *map)
 {
-	//int	lines[map->cols];
 	int i;
-	int j;
+	int	j;
+	int line_size;
+	int	lines;
 
+	i = 0;
+	j = 0;
+	line_size = 0;
+	while (i < map->rows)
+	{
+		if (i == 0 && j < map->cols - 1)
+		{
+			line_size++;
+			j++;
+		}
+		i++;
+	}
 	i = 0;
 	j = 0;
 	while (i < map->rows)
 	{
+		lines = 0;
 		while (j < map->cols)
 		{
-			if (map->data[i][j] != 'E' && map->data[i][j] != 'P'
-		&& map->data[i][j] != 'C' && map->data[i][j] != '1' && map->data[i][j] != '0')
+			lines++;
+			j++;
+		}
+		if (lines != line_size)
 		{
-			ft_printf("AQUI\n");
+			ft_printf("%d\n %d\n", lines, line_size);
 			ft_printf("Error\n Map is not rectangular\n");
 			map_free(map);
 			exit(EXIT_FAILURE);
 		}
-			ft_printf("%c ", map->data[i][j]);
-			j++;
-		}
-		ft_printf("\n");
 		i++;
 	}
-}
-
-void	print_errors(char c)
-{
-	if (c == 'E' || c == 'P'
-		|| c == 'C' || c == '1' || c == '0')
-	{
-		ft_printf("Error\n Map is not rectangular\n");
-		exit(EXIT_FAILURE);
-	}
-	ft_printf("Error\n Map is not surrounded by walls (1's)\n");
 }
