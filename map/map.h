@@ -58,6 +58,8 @@ void	check_chars(char c, int *check);
 
 void	check_valid_char(t_map *map, int *check);
 
+void	check_rect(t_map *map);
+
 void	check_walls(t_map *map);
 
 void	print_errors(char c);
