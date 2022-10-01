@@ -38,11 +38,6 @@ void	map_functions(t_map *map, char	*path)
 void	game_functions(t_game *game, t_map *map)
 {
 	create_game(game, map);
-	if (!game)
-	{
-		ft_printf("Error\n %s\n", strerror(ENOMEM));
-		exit (EXIT_FAILURE);
-	}
 	img_generate(game);
 }
 

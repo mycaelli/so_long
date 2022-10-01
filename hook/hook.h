@@ -38,6 +38,4 @@ void	move_exit(t_game *game);
 
 void	move_general(t_game *game);
 
-void	invalid_path(t_game *game, t_map *map);
-
 #endif
