@@ -53,8 +53,8 @@ int	main(int argc, char *argv[])
 
 	map = (t_map *) ft_calloc(1, sizeof(t_map));
 	if (argc != 2)
-	{	// NO SUCH FILE OR DIRECTORY ERROR HERE 
-	//	free(map);
+	{
+		free(map);
 		ft_printf("Error\n %s\n", strerror(EINVAL));
 		exit (EXIT_FAILURE);
 	}
