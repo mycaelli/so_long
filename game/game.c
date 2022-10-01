@@ -16,19 +16,22 @@ void	create_game(t_game *game, t_map *map)
 {
 	if (!game)
 	{
+		map_free(map);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
-	open_game(game, map->rows, map->cols);
+	open_game(game, map, map->rows, map->cols);
 	game->map = map;
 	game->movements = 0;
 }
 
-int	open_game(t_game *game, int rows, int cols)
+int	open_game(t_game *game, t_map *map, int rows, int cols)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 	{
+		map_free(map);
+		free(game);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
@@ -38,7 +41,10 @@ int	open_game(t_game *game, int rows, int cols)
 			game->cols, game->rows, "Pumpikim Obssession");
 	if (!game->win_ptr)
 	{
-		free(game->win_ptr);
+		map_free(map);
+		mlx_destroy_display(game->mlx_ptr);
+		free(game->mlx_ptr);
+		free(game);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}

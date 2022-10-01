@@ -34,7 +34,7 @@ typedef struct s_map
 	int		collectibles;
 }	t_map;
 
-int		map_open(char*file_path);
+int	map_open(t_map *map, char*file_path);
 
 void	map_size(char *file_path, t_map *map);
 

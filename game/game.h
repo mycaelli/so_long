@@ -30,7 +30,7 @@ typedef struct s_game
 	int		movements;
 }	t_game;
 
-int		open_game(t_game *game, int rows, int cols);
+int	open_game(t_game *game, t_map *map, int rows, int cols);
 
 void	create_game(t_game *game, t_map *map);
 

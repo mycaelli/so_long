@@ -18,6 +18,8 @@ CLEAN_LIBFT = cd libft && make clean
 
 FCLEAN_LIBFT = cd libft && make fclean
 
+all: $(NAME)
+
 $(NAME):  $(LIBFT_A) $(OBJ)
 	$(CC) $(CFLAGS) $(SRC) $(LIBFT_A) $(X_FLAGS) -o $(NAME) -g
 
@@ -31,3 +33,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(FCLEAN_LIBFT)
+
+re:	fclean all
+
+.PHONY: all clean fclean re

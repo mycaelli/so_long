@@ -14,10 +14,10 @@
 
 int	close_win(t_game *game)
 {
+	map_free(game->map);
 	img_free(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
-	map_free(game->map);
 	free(game->mlx_ptr);
 	free(game);
 	exit(EXIT_SUCCESS);

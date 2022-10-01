@@ -95,10 +95,7 @@ int	find_items(t_map *map)
 				map_normalize(map);
 				if (path_validation(map, map->old_pos_character[0],
 						map->old_pos_character[1], arguments) == 0)
-				{
-					map_free(map);
 					return (0);
-				}
 			}
 		}
 	}
@@ -108,10 +105,8 @@ int	find_items(t_map *map)
 void	map_free(t_map *map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < map->rows)
 	{
 		free(map->data[i]);

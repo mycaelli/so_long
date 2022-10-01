@@ -6,13 +6,15 @@
 /*   By: mcerquei <mcerquei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:43:11 by mcerquei          #+#    #+#             */
-/*   Updated: 2022/09/29 22:05:09 by mcerquei         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:31:17 by mcerquei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game/game.h"
 #include "map/map.h"
 #include "hook/hook.h"
+
+// make && clear && valgrind --show-leak-kinds=all --track-origins=yes --leak-check
 
 void	map_functions(t_map *map, char	*path)
 {
@@ -51,7 +53,8 @@ int	main(int argc, char *argv[])
 
 	map = (t_map *) ft_calloc(1, sizeof(t_map));
 	if (argc != 2)
-	{
+	{	// NO SUCH FILE OR DIRECTORY ERROR HERE 
+	//	free(map);
 		ft_printf("Error\n %s\n", strerror(EINVAL));
 		exit (EXIT_FAILURE);
 	}

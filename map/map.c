@@ -12,13 +12,14 @@
 
 #include "map.h"
 
-int	map_open(char*file_path)
+int	map_open(t_map *map, char*file_path)
 {
 	int			fd;
 
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 	{
+		free(map);
 		ft_printf("Error\n %s\n", strerror(ENOENT));
 		exit(EXIT_FAILURE);
 	}	
@@ -32,7 +33,7 @@ void	map_size(char *file_path, t_map *map)
 
 	map->rows = 0;
 	map->cols = 0;
-	fd = map_open(file_path);
+	fd = map_open(map, file_path);
 	line = get_next_line(fd, 1);
 	while (line[map->cols] && line[map->cols] != '\n')
 		map->cols++;
@@ -54,6 +55,8 @@ void	map_initialize(t_map *map)
 	map->map_aux = ft_calloc(sizeof(char *), map->rows);
 	if (!map->data || !map->map_aux)
 	{
+		free(map->data);
+		free(map->map_aux);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
@@ -63,8 +66,10 @@ void	map_initialize(t_map *map)
 		map->map_aux[i] = ft_calloc(sizeof(char *), map->cols);
 		i++;
 	}
+	i = 0;
 	if (!*(map->data))
 	{
+		map_free(map);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
@@ -78,7 +83,7 @@ int	map_generate(char *file_path, t_map *map)
 
 	line = NULL;
 	map->collectibles = 0;
-	fd = map_open(file_path);
+	fd = map_open(map, file_path);
 	check = ft_calloc(4, sizeof(int));
 	map_insertion(map, line, check, fd);
 	line = get_next_line(fd, 1);
