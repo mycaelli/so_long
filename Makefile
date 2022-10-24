@@ -19,9 +19,9 @@ CLEAN_LIBFT = cd libft && make clean
 FCLEAN_LIBFT = cd libft && make fclean
 
 all: $(NAME)
-
-$(NAME):  $(LIBFT_A) $(OBJ)
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT_A) $(X_FLAGS) -o $(NAME) -g
+	
+$(NAME): $(LIBFT_A) $(OBJ)
+	$(CC) $(CFLAGS) $(SRC) -Llibmlx.a -lmlx $(LIBFT_A) $(X_FLAGS) -o $(NAME) -g
 
 $(LIBFT_A):
 	cd ./libft && make
