@@ -4,4 +4,7 @@
 #
 #
 Minilibx was used for GUI (it's needed to download it on the machine to play the game).
+#
+![](https://github.com/mycaelli/so_long/blob/master/big_map.gif)
+![](https://github.com/mycaelli/so_long/blob/master/link_map.gif)
 
