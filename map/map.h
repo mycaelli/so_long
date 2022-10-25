@@ -16,7 +16,6 @@
 
 # include <fcntl.h>
 # include <string.h>
-//# include <mlx.h>
 #include <mlx.h>
 # include <errno.h>
 # include "../libft/libft.h"

@@ -14,8 +14,6 @@
 #include "map/map.h"
 #include "hook/hook.h"
 
-// make && clear && valgrind --show-leak-kinds=all --track-origins=yes --leak-check
-
 void	map_functions(t_map *map, char	*path)
 {
 	if (!map)
