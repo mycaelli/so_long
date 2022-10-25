@@ -7,6 +7,5 @@ Compile the code with: make && ./so_long [map_name].ber
 ![](https://github.com/mycaelli/so_long/blob/master/big_map.gif)
 ![](https://github.com/mycaelli/so_long/blob/master/link_map.gif)
 #
-Minilibx was used for GUI (it is needed to download it on the machine to play the game).
-[Minilibx repository](https://github.com/42Paris/minilibx-linux)
+Minilibx was used for GUI (it is needed to download it on the machine to play the game) -> [Minilibx repository](https://github.com/42Paris/minilibx-linux)
 #
