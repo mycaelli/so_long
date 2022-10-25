@@ -20,6 +20,7 @@ void	map_functions(t_map *map, char	*path)
 {
 	if (!map)
 	{
+		ft_printf("!map error");
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}

@@ -21,22 +21,24 @@ void	img_generate(t_game *game)
 	game->sprites = (void *) ft_calloc(5, sizeof(void *));
 	if (!game->sprites)
 	{
+		ft_printf("!game->sprites memory error");
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}
 	game->sprites[WALL] = mlx_xpm_file_to_image(game->mlx_ptr,
-			WALL_PATH, &size[0], &size[1]);
+			"sprites/images/wall/wall.xpm", &size[0], &size[1]);
 	game->sprites[FLOOR] = mlx_xpm_file_to_image(game->mlx_ptr,
-			FLOOR_PATH, &size[2], &size[3]);
+			"sprites/images/floor/floor.xpm", &size[2], &size[3]);
 	game->sprites[COLLECT] = mlx_xpm_file_to_image(game->mlx_ptr,
-			COLLECTIBLE_PATH, &size[4], &size[5]);
+			"sprites/images/colle/colle.xpm", &size[4], &size[5]);
 	game->sprites[CHARACTER] = mlx_xpm_file_to_image(game->mlx_ptr,
-			CHARACTER_PATH, &size[6], &size[7]);
+			"sprites/images/char/char.xpm", &size[6], &size[7]);
 	game->sprites[DOOR] = mlx_xpm_file_to_image(game->mlx_ptr,
-			DOOR_PATH, &size[8], &size[9]);
+			"sprites/images/door/door.xpm", &size[8], &size[9]);
 	if (!game->sprites[WALL] || !game->sprites[FLOOR] || !game->sprites[COLLECT]
 		|| !game->sprites[CHARACTER] || !game->sprites[DOOR])
 	{
+		ft_printf("!game->sprites[SPRITE] memory error\n");
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
 	}

@@ -16,11 +16,11 @@
 
 # include "../game/game.h"
 
-# define WALL_PATH			"/home/coder/so_long/sprites/images/wall/wall.xpm"
-# define FLOOR_PATH			"/home/coder/so_long/sprites/images/floor/floor.xpm"
-# define COLLECTIBLE_PATH 	"/home/coder/so_long/sprites/images/colle/colle.xpm"
-# define CHARACTER_PATH		"/home/coder/so_long/sprites/images/char/char.xpm"
-# define DOOR_PATH			"/home/coder/so_long/sprites/images/door/door.xpm"
+# define WALL_PATH			"so_long/sprites/images/wall/wall.xpm"
+# define FLOOR_PATH			"so_long/sprites/images/floor/floor.xpm"
+# define COLLECTIBLE_PATH 	"so_long/sprites/images/colle/colle.xpm"
+# define CHARACTER_PATH		"so_long/sprites/images/char/char.xpm"
+# define DOOR_PATH			"so_long/sprites/images/door/door.xpm"
 
 # define WALL				0
 # define FLOOR				1	

@@ -55,6 +55,7 @@ void	map_initialize(t_map *map)
 	map->map_aux = ft_calloc(sizeof(char *), map->rows);
 	if (!map->data || !map->map_aux)
 	{
+		ft_printf("!map->data || !map->map_aux memory error");
 		free(map->data);
 		free(map->map_aux);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
@@ -69,6 +70,7 @@ void	map_initialize(t_map *map)
 	i = 0;
 	if (!*(map->data))
 	{
+		ft_printf("!*(map->data) memory error");
 		map_free(map);
 		ft_printf("Error\n %s\n", strerror(ENOMEM));
 		exit (EXIT_FAILURE);
